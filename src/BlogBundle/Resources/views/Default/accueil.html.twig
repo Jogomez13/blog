@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<html lang="fr">
+<meta charset="utf-8">
+<link rel="stylesheet" href=""/>
+
+<head>
+ 	  <title>Blog</title>
+</head>
+
+<body>
+    <div id="container">
+     <h1>Accueil</h1> 
+       <nav id="nav">
+                <ul>
+			<li class="menu"><a href="{{ path ("telephone") }} ">Téléphone</a></li>
+			<li class="menu"><a href="{{ path ("ordinateur") }} ">Ordinateur</a></li>
+			<li class="menu"><a href="{{ path ("tablette") }} ">Tablette</a></li>
+                        <li class="menu"><a href="{{ path ("membre") }} ">Espace Membre</a>
+                         <li class="menu"><a href=" ">Connexion</a></li>
+                         <li class="menu"><a href=" ">Inscription</a></li>
+                       </li>
+		</ul>
+      </nav>
+      {%block section %}
+    {%endblock%}
+   </div>
+</body>
+
+
