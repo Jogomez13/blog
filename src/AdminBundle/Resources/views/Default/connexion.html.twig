@@ -1,1 +1,26 @@
-{# empty Twig template #}
+
+<div>
+	<div>Se connecter</div>
+	
+	<div>
+            <form>
+                <div>
+                    <div>
+                        <div>
+                            <label for="mail">E-mail</label>
+                            <input type="text" class="form-control" id="mail" name="mail" placeholder="Votre mail">
+              
+                        </div>
+                        <div>
+                            <label for="pass" class="sr-only">Mot de passe</label>
+                            <input type="password"id="pass" name="pass" placeholder="Votre mot de passe">
+                        </div>
+                    </div>
+                    <button type="submit" class="login-button">Envoyer</button>
+                </div>
+                <div>
+                    <p>Nouvel utilisateur? <a href="{{path("inscription")}}">Créer un nouveau compte</a></p>
+                </div>
+            </form>
+        </div>
+</div>
