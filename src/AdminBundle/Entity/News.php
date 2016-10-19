@@ -43,9 +43,9 @@ class News
     private $categorie;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="date", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Categorie")
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
     private $date;
 

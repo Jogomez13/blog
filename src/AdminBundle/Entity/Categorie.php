@@ -24,23 +24,11 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="ordinateur", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
-    private $ordinateur;
+    private $nom;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tablette", type="string", length=255)
-     */
-    private $tablette;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="telephone", type="string", length=255)
-     */
-    private $telephone;
+    
 
 
     /**
@@ -52,77 +40,41 @@ class Categorie
     {
         return $this->id;
     }
-
-    /**
-     * Set ordinateur
-     *
-     * @param string $ordinateur
+     /**
+     * Set id
      *
      * @return Categorie
      */
-    public function setOrdinateur($ordinateur)
+    public function setId($id)
     {
-        $this->ordinateur = $ordinateur;
+        $this->id = $id;
+        return $this ;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Categorie
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get ordinateur
+     * Get nom
      *
      * @return string
      */
-    public function getOrdinateur()
+    public function getNom()
     {
-        return $this->ordinateur;
+        return $this->nom;
     }
 
-    /**
-     * Set tablette
-     *
-     * @param string $tablette
-     *
-     * @return Categorie
-     */
-    public function setTablette($tablette)
-    {
-        $this->tablette = $tablette;
-
-        return $this;
-    }
-
-    /**
-     * Get tablette
-     *
-     * @return string
-     */
-    public function getTablette()
-    {
-        return $this->tablette;
-    }
-
-    /**
-     * Set telephone
-     *
-     * @param string $telephone
-     *
-     * @return Categorie
-     */
-    public function setTelephone($telephone)
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
-    /**
-     * Get telephone
-     *
-     * @return string
-     */
-    public function getTelephone()
-    {
-        return $this->telephone;
-    }
+    
 }
 
