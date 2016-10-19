@@ -1,29 +1,31 @@
-{% extends "BlogBundle:Default:accueil.html.twig" %}	
-{%block body %}
-<div>
-	<div>Se connecter</div>
-	
-	<div>
-            <form>
-                <div>
-                    <div>
-                        <div>
-                            <label for="mail">E-mail</label>
-                            <input type="text" class="form-control" id="mail" name="mail" placeholder="Votre mail">
-              
-                        </div>
-                        <div>
-                            <label for="pass" class="sr-only">Mot de passe</label>
-                            <input type="password"id="pass" name="pass" placeholder="Votre mot de passe">
-                        </div>
-                    </div>
-                    <button type="submit" class="login-button">Envoyer</button>
-                </div>
-                <div>
-                    <p>Nouvel utilisateur? <a href="{{path("inscription")}}">Créer un nouveau compte</a></p>
-                </div>
-            </form>
+<body>
+    <div>
+        <div>Se connecter</div>
+
+
+        <div>
+
+            <div>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.message }}</div>
+                {% endif %}
+                <form action="{{ path('login_check') }}" method="post">
+                    <label for="username">Email :</label>
+                    <input type="text" id="username" name="_username" value="" />
+
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="_password" />
+                    <br />
+                    <input type="submit" value="Connexion" />
+                </form>
+            </div>
+
+
+            <div>
+                <p>Nouvel utilisateur? <a href="{{path("inscription")}}">Créer un nouveau compte</a></p>
+            </div>
+
+
         </div>
-</div>
-                
-{%endblock %}
+
+</body>

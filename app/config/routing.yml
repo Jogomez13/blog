@@ -1,10 +1,24 @@
 blog:
     resource: "@BlogBundle/Controller/"
     type:     annotation
-    prefix:   /
 
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
-    prefix:   /
 
+login:
+
+    path: /connexion
+
+    defaults:
+
+        _controller: MainBundle:AdminViewController
+
+login_check:
+
+    path: /login_check
+
+
+logout:
+
+    path: /logout
