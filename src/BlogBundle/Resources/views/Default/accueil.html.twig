@@ -19,7 +19,7 @@
                     <li class="menu"><a href="">Espace Membre</a></li>
                     <ul>
                         {%if app.user.username is defined%}
-                            <li class="menu"><a href="">Deconnexion</a></li>
+                            <li class="menu"><a href="{{ path ("logout")}}">Deconnexion</a></li>
 
                         {%else%}
                             <li class="menu"><a href="{{ path ("connexion")}}">Connexion</a></li>
