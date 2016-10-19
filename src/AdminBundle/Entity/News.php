@@ -36,16 +36,17 @@ class News
     private $image;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Categorie")
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
+     *
      */
     private $categorie;
 
     /**
-     *
-     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Categorie")
-     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
+     *@var datetime
+     * 
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
@@ -57,9 +58,8 @@ class News
     private $auteur;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="etatpublication", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Etatpublication")
+     * @ORM\JoinColumn(name="etatpublication_id", referencedColumnName="id")
      */
     private $etatpublication;
 

@@ -24,16 +24,9 @@ class Etatpublication
     /**
      * @var string
      *
-     * @ORM\Column(name="publie", type="string", length=255)
+     * @ORM\Column(name="etat", type="string", length=255)
      */
-    private $publie;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="brouillon", type="string", length=255)
-     */
-    private $brouillon;
+    private $etat;
 
 
     /**
@@ -47,51 +40,29 @@ class Etatpublication
     }
 
     /**
-     * Set publie
+     * Set etat
      *
-     * @param string $publie
+     * @param string $etat
      *
      * @return Etatpublication
      */
-    public function setPublie($publie)
+    public function setEtat($etat)
     {
-        $this->publie = $publie;
+        $this->etat = $etat;
 
         return $this;
     }
 
     /**
-     * Get publie
+     * Get etat
      *
      * @return string
      */
-    public function getPublie()
+    public function getEtat()
     {
-        return $this->publie;
+        return $this->etat;
     }
 
-    /**
-     * Set brouillon
-     *
-     * @param string $brouillon
-     *
-     * @return Etatpublication
-     */
-    public function setBrouillon($brouillon)
-    {
-        $this->brouillon = $brouillon;
 
-        return $this;
-    }
-
-    /**
-     * Get brouillon
-     *
-     * @return string
-     */
-    public function getBrouillon()
-    {
-        return $this->brouillon;
-    }
 }
 
