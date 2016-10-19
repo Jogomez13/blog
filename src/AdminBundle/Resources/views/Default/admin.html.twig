@@ -1,9 +1,11 @@
-
-        <h1>Articles</h1>
-        <div>
-            <a href=""><h3>Ajouter une article</h3></a>
-            <a href="">Voir les brouillons</a>
-            </div>
+<nav>
+    <ul>
+        <li><a href="{{path("newarticle")}}">Ajouter un article</a></li>
+        <li><a href="{{path("brouillons")}}">Voir mes brouillons</a></li>
+        <li><a href="{{path("profil")}}">Voir profil</a></li>
+    </ul>
+</nav>
+            <h2>Articles</h2>
         {#{% for ... in ...%}#}
      <div>
             <div>
@@ -22,5 +24,6 @@
      
             </div>
              </div>
-           
+        
+        {%endblock %}
              

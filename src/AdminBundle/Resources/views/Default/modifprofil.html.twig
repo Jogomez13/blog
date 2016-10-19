@@ -1,0 +1,49 @@
+<nav>
+<ul>
+            <li><a href="{{path("newarticle")}}">Ajouter une article</a></li>
+            <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
+            <li><a href="{{path("admin")}}">Retour page admin</a></li>
+    </ul>
+</nav>
+    <h2>Modif profil</h2>
+
+<div>
+		<form>
+		
+			<div>
+                            <div>
+                                <div>
+                                    <label for="ins_nom">Nom</label>
+                                    <input type="text" id="ins_nom" name="ins_nom" placeholder="Nom">
+                                    <label for="ins_prenom">Prénom</label>
+                                    <input type="text" id="ins_prenom" name="ins_nom" placeholder="Nom">
+                                </div>
+					<div>
+                                            <label for="Upload photo">Téléchargez photo</label>
+                                            <div>
+                                                <input id="Upload photo" name="Upload photo" class="input-file" type="file">
+                                            </div>
+                                        </div>
+						<label for="modif_pass" class="sr-only">Nouveau mot de passe</label>
+						<input type="password" class="form-control" id="reg_password" name="modif_pass" placeholder="Nouveau mot de passe">
+					</div>
+					<div>
+						<label for="modif_pass_confirm">Confirmez votre mot de passe</label>
+						<input type="password" class="form-control" id="ins_pass_confirm" name="modif_pass_confirm" placeholder="Confirmez le mot de passe">
+					</div>
+					
+					<div>
+						<label for="modif_email">Changez votre Email</label>
+						<input type="text" id="ins_email" name="modif_email" placeholder="Votre e-mail">
+					</div><div>
+						<label for="modif_email">Confirmez votre Email</label>
+						<input type="text" id="ins_email" name="modif_email" placeholder="Votre e-mail">
+					</div>
+					
+				</div>
+				<button type="submit">Enregister modifications</button>
+			</div>
+		</form>
+	</div>
+	
+</div>
