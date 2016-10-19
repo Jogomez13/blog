@@ -36,10 +36,11 @@ class BlogController extends Controller {
         return $this->render('BlogBundle:Default:ordi.html.twig');
     }
     /**
-     * @Route("/membre", name="membre")
+     * @Route("/contact", name="contact")
      */
-    public function indexEspaceMembre()
+    public function indexContact()
     {
         return $this->render('BlogBundle:Default:contact.html.twig');
     }
+     
 }

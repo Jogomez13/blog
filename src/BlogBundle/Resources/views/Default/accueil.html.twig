@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html>
-<html lang="fr">
-<meta charset="utf-8">
-<link rel="stylesheet" href=""/>
+    <html lang="fr">
+        <meta charset="utf-8">
+        <link href="{{ asset('../web/bundles/framework/css/style.css') }}" rel="stylesheet" />
 
-<head>
- 	  <title>Blog</title>
+        <head>
+            <title>Blog</title>
+        <header>
 
-<div id="container">
-     <h1>Accueil</h1> 
-       <nav id="nav">
+        </header>
+        <div id="container">
+            <h1>Accueil</h1> 
+            <nav id="nav">
                 <ul>
-			<li class="menu"><a href="{{ path ("telephone")}}">Téléphone</a></li>
-			<li class="menu"><a href="{{ path ("ordinateur")}}">Ordinateur</a></li>
-			<li class="menu"><a href="{{ path ("tablette")}}">Tablette</a></li>
-                        <li class="menu"><a href="{{ path ("membre")}}">Espace Membre</a>
-                         <li class="menu"><a href="{{ path ("connexion")}}">Connexion</a></li>
-                         <li class="menu"><a href="{{ path ("inscription")}}">Inscription</a></li>
-                       </li>
-		</ul>
-      </nav>
-</head>
+                    <li class="menu"><a href="{{ path ("telephone")}}">Téléphone</a></li>
+                    <li class="menu"><a href="{{ path ("ordinateur")}}">Ordinateur</a></li>
+                    <li class="menu"><a href="{{ path ("tablette")}}">Tablette</a></li>
+                    <li class="menu"><a href="">Espace Membre</a></li>
+                    <ul>
+                        {%if app.user.username is defined%}
+                            <li class="menu"><a href="">Deconnexion</a></li>
 
-<body>
-   
-      {%block body %}
-          <p>vu accueil</p>
-    {%endblock %}
-   </div>
+                        {%else%}
+                            <li class="menu"><a href="{{ path ("connexion")}}">Connexion</a></li>
+                            {%endif%}
+                        <li class="menu"><a href="{{ path ("inscription")}}">Inscription</a></li>
+                        <li class="menu"><a href="{{ path ("contact")}}">Contact</a></li>
+                    </ul>
+
+
+                </ul>
+            </nav>
+        </head>
+
+        <body>
+
+            {%block body %}
+                <p>vu accueil</p>
+            {%endblock %}
+            <p class="copyright">Développé & propulsé par : <a href="http://www.driad.fr/">Charles-André PALADE</a><a href="http://jonathan-gomez.fr/">Jonathan GOMEZ</a><a href="http://thibaut-figueres.fr/"> Thibaut FIGUERES</a><p>et Gaston SABOY</p></p>
+    </div>
 </body>
 
 
