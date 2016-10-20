@@ -21,13 +21,29 @@ class User implements UserInterface, \Serializable {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pseudo", type="string", length=100)
+     */
+    private $pseudo;
+  
+    
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=100)
      */
     private $nom;
+    
+     
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="avatar", type="string", length=100)
+     */
+    private $avatar;
 
     /**
      * @var string
@@ -178,7 +194,48 @@ class User implements UserInterface, \Serializable {
     public function getSalt() {
         return $this->salt;
     }
+    
+    /**
+     * Get pseudo
+     *
+     * @return string
+     */
+    function getPseudo() {
+        return $this->pseudo;
+    }
+    
+    /**
+     * Get avatar
+     *
+     * @return string
+     */
+    function getAvatar() {
+        return $this->avatar;
+    }
+    
+     /**
+     * Set pseudo
+     *
+     * @param array $pseudo
+     *
+     * @return User
+     */
+    function setPseudo($pseudo) {
+        $this->pseudo = $pseudo;
+    }
+    
+    /**
+     * Set avatar
+     *
+     * @param array $avatar
+     *
+     * @return User
+     */
+    function setAvatar($avatar) {
+        $this->avatar = $avatar;
+    }
 
+   
     /**
      * Set roles
      *
