@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html>
     <html lang="fr">
-        <meta charset="utf-8">
-        <link href="{{ asset('../web/bundles/framework/css/style.css') }}" rel="stylesheet" />
+    <head>  
+                                                <meta charset="utf-8">
+{# lien importation du fichier du style css #}  <link href="{{ asset('../web/bundles/framework/css/style.css') }}" rel="stylesheet" />
+{# lien iportation du fichier du boostrap   #}  <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />      
+    </head>
+{# titre qui se trouve dans l'onglet de la page #} <title>Blog</title>
+            
+            
+<header>{# debut de la balise header #}
+    <h1 id='titreprincipal'>Le blog de l'actualité high tech</h1>
+</header>{# fin de la balise header #}
+        
+{#debut de la bar de navigation#}<nav class="navbar navbar-inverse">
+                                  <ul class="nav navbar-nav">
+{# lien ver la page ordinateur #}   <li  class="active"><a href="{{ path ("telephone")}}">Téléphone</a></li>
+{# lien ver la page ordinateur #}   <li><a href="{{ path ("ordinateur")}}">Ordinateur</a></li>
+{# lien ver la page tablette   #}   <li><a href="{{ path ("tablette")}}">Tablette</a></li>
+                    
+                    <li><a href="">Espace Membre</a></li>
+                    
+                    <ul>{#debut du sous menu pour espace membre#}
+                                    {%if app.user.username is defined%}
+{# lien ver la page deconnection#}  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><a href="{{ path ("logout")}}">Deconnexion<span class="caret"></span></a>
 
-        <head>
-            <title>Blog</title>
-        <header>
-
-        </header>
-        <div id="container">
-            <h1>Accueil</h1> 
-            <nav id="nav">
-                <ul>
-                    <li class="menu"><a href="{{ path ("telephone")}}">Téléphone</a></li>
-                    <li class="menu"><a href="{{ path ("ordinateur")}}">Ordinateur</a></li>
-                    <li class="menu"><a href="{{ path ("tablette")}}">Tablette</a></li>
-                    <li class="menu"><a href="">Espace Membre</a></li>
-                    <ul>
-                        {%if app.user.username is defined%}
-                            <li class="menu"><a href="{{ path ("logout")}}">Deconnexion</a></li>
-
-                        {%else%}
-                            <li class="menu"><a href="{{ path ("connexion")}}">Connexion</a></li>
-                            {%endif%}
-                        <li class="menu"><a href="{{ path ("inscription")}}">Inscription</a></li>
-                        <li class="menu"><a href="{{ path ("contact")}}">Contact</a></li>
-                    </ul>
-
-
+                                    {%else%}
+{# lien ver la page connection  #}  <li class="dropdown-menu"><a href="{{ path ("connexion")}}">Connexion</a></li>
+                                    {%endif%}
+                        
+{# lien ver la page inscription #}  <li class="menu"><a href="{{ path ("inscription")}}">Inscription</a></li>                       
+{# lien ver la page contact     #}  <li class="menu"><a href="{{ path ("contact")}}">Contact</a></li>
+                    </ul>{#fin du sous menu pour espace membre#}
                 </ul>
             </nav>
-        </head>
-
-        <body>
-
-            {%block body %}
-                <p>vu accueil</p>
-            {%endblock %}
-            <p class="copyright">Développé & propulsé par : <a href="http://www.driad.fr/">Charles-André PALADE</a><a href="http://jonathan-gomez.fr/">Jonathan GOMEZ</a><a href="http://thibaut-figueres.fr/"> Thibaut FIGUERES</a><p>et Gaston SABOY</p></p>
-    </div>
-</body>
 
 
+{%block body %}
+{%endblock %}  
+        
+            
+{# lieux ou se trouve le copyright du blog plus les nom des createur et les lien des portfolios #}
+<footer> {# debut de la balise footer #}
+    <p class="copyright">Développé & propulsé par : <a href="http://www.driad.fr/">Charles-André PALADE</a><a href="http://jonathan-gomez.fr/">Jonathan GOMEZ</a><a href="http://thibaut-figueres.fr/"> Thibaut FIGUERES</a><p>et Gaston SABOY</p></p>     
+</footer>  {# fin de la balise footer #}
+</html>
