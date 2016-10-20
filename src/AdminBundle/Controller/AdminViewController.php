@@ -4,6 +4,9 @@ namespace AdminBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use AdminBundle\Entity\User;
 
 /**
  * Description of AdminViewController
@@ -41,9 +44,29 @@ class AdminViewController extends Controller {
      * @Route("/inscription", name="inscription")
      * 
      */
-    public function GetInscription() {
-        //TEST//
+    public function GetInscription(Request $request) {
 
+        $em = $this->getDoctrine()->getManager();
+        $user = new User();//Instance de l'entité User
+
+        //Si il détecte une requete ajax
+        if ($request->getMethod() == "POST") {
+            $user->setUsername($request->get('username'));
+            $user->setPassword($request->get('password'));
+            $user->setNom($request->get('nom'));
+            $user->setPrenom($request->get('prenom'));
+            $user->setSalt("");
+            $user->setRoles(array("ROLE_USER"));
+
+            $em->persist($user);
+            $em->flush();
+
+
+            $response = new JsonResponse(); //Retour des données au format Json
+            $response->setData(array('reussite' => 'Inscription reussi !'));
+
+            return $response;
+        }
         return $this->render('AdminBundle:Default:inscription.html.twig');
     }
 
@@ -67,21 +90,22 @@ class AdminViewController extends Controller {
     public function GetBrouillons() {
         return $this->render('AdminBundle:Default:brouillons.html.twig');
     }
-    
+
     /**
      * @Route ("/articles",name="articles")
      */
-    public function GetArticles(){
-       //ici je récupere toutes les news
-       $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-       $listNews = $repository->findAll();
-       
-        return $this->render('AdminBundle:Default:articles.html.twig',array('listNews' => $listNews));
+    public function GetArticles() {
+        //ici je récupere toutes les news
+        $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
+        $listNews = $repository->findAll();
+
+        return $this->render('AdminBundle:Default:articles.html.twig', array('listNews' => $listNews));
     }
-     /**
+
+    /**
      * @Route("/supp/{id}", name="supp")
      */
-    public function suppArticles($id){
+    public function suppArticles($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $news = $em->find('AdminBundle:News', $id);
         //ici je récupère l'entité par l'idée
@@ -92,4 +116,5 @@ class AdminViewController extends Controller {
         return $this->redirectToRoute('articles');
         //ci-dessus une fois mon article supprimé je redirige vers la vue articles
     }
+
 }

@@ -1,6 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../inscription.js"></script>
-{%block body %}
+<body>
+
     <div>
         <div>S'inscrire</div>
 
@@ -10,9 +11,9 @@
                 <div>
                     <div>
 
-                        <input type="text" id="ins_nom" name="ins_nom" placeholder="Nom">
+                        <input type="text" id="nom" placeholder="Nom">
 
-                        <input type="text" id="ins_prenom" name="ins_nom" placeholder="Prenom">
+                        <input type="text" id="prenom" placeholder="Prenom">
                     </div>
 
                     <div>
@@ -20,16 +21,16 @@
                     </div>
                     <div>
 
-                        <input type="password" class="form-control" id="reg_password" name="ins_pass" placeholder="Votre mot de passe">
+                        <input type="password" class="form-control" id="password" placeholder="Votre mot de passe">
                     </div>
                     <div>
 
-                        <input type="password" class="form-control" id="ins_pass_confirm" name="ins_pass_confirm" placeholder="Confirmez le mot de passe">
+                        <input type="password" class="form-control" id="conf_password" placeholder="Confirmez le mot de passe">
                     </div>
 
                     <div>
 
-                        <input type="text" id="ins_email" name="ins_email" placeholder="Votre e-mail">
+                        <input type="text" id="email" placeholder="Votre e-mail">
                     </div>
 
                 </div>
@@ -42,5 +43,4 @@
         </div>
 
     </div>
-
-{%endblock %}
+</body>
