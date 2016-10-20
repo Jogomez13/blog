@@ -2,8 +2,11 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Entity\News;
+use AdminBundle\Form\NewsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Description of AdminViewController
@@ -78,6 +81,44 @@ class AdminViewController extends Controller {
        
         return $this->render('AdminBundle:Default:articles.html.twig',array('listNews' => $listNews));
     }
+    
+    /**
+     * @Route("/add",name="add")
+     */
+    public function addNews(Request $request){
+        //Je crée un nouvel objet
+        $article = new News();
+        //Je crée le formulaire à partir de la classe NewsType
+        $news= $this->createForm(NewsType::class,$article);
+        //quand le formulaire est envoyé on envoi un nouvel article
+        if ($request->getMethod() == 'POST') {
+            $news->handleRequest($request);
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($article);
+            $em->flush();
+            return $this->redirectToRoute('articles');
+        }
+    
+        return $this->render('AdminBundle:Default:newarticle.html.twig' , array('form' => $news->createView()));
+     
+    }
+    
+     /**
+     * @Route("/modif/{id}", name="modif")
+     */
+    public function modifNews($id, Request $request) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $article = $em->find('AdminBundle:News', $id);
+        $news= $this->createForm(NewsType::class,$article);
+         if ($request->getMethod() == 'POST') {
+            $news->handleRequest($request);
+            $em->merge($article);
+            $em->flush();
+            return $this->redirectToRoute('articles');
+        }
+        return $this->render('AdminBundle:Default:modifarticle.html.twig' , array('form' => $news->createView()));
+        
+    }
      /**
      * @Route("/supp/{id}", name="supp")
      */
@@ -92,4 +133,6 @@ class AdminViewController extends Controller {
         return $this->redirectToRoute('articles');
         //ci-dessus une fois mon article supprimé je redirige vers la vue articles
     }
+    
+    
 }
