@@ -1,3 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+header {
+  background-image: url("../img/header.png");
+  background-repeat: no-repeat;
+  /*  permet de pas repeter l'image */
+  background-size: contain;
+  /*  permet de centre l'image ?!?! */
+  font-family: 'Lobster', cursive;
+  /*  style ecriture du texte       */
+  text-align: center;
+  /*  Alignement du titre principal dans le header */
+  height: 300px;
+  /* taille de la hauteur du header */
+  width: 100%;
+  /* taille de la largeur du header */ }
 
+#titreprincipal {
+  font-size: 60px;
+  /* taille du titre principal */ }
 
 /*# sourceMappingURL=style.css.map */
