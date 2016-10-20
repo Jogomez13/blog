@@ -2,6 +2,8 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Entity\News;
+use AdminBundle\Form\NewsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -26,7 +28,7 @@ class AdminViewController extends Controller {
      * @Route("/connexion", name="connexion")
      * 
      */
-    public function GetConnexion() {  //Fonction pour connecter l'utilisateur
+    public function getConnexion() {  //Fonction pour connecter l'utilisateur
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
 
             return $this->redirectToRoute("bool"); //Retour sur la page principal//             
@@ -44,7 +46,7 @@ class AdminViewController extends Controller {
      * @Route("/inscription", name="inscription")
      * 
      */
-    public function GetInscription(Request $request) {
+    public function getInscription(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
         $user = new User();//Instance de l'entité User
@@ -73,39 +75,76 @@ class AdminViewController extends Controller {
     /**
      * @Route("/profil", name="profil")
      */
-    public function GetProfil() {
+    public function getProfil() {
         return $this->render('AdminBundle:Default:profil.html.twig');
     }
 
     /**
      * @Route("/modifprofil", name="modifprofil")
      */
-    public function GetModifprofil() {
+    public function getModifprofil() {
         return $this->render('AdminBundle:Default:modifprofil.html.twig');
     }
 
     /**
      * @Route("/brouillions", name="brouillons")
      */
-    public function GetBrouillons() {
+    public function getBrouillons() {
         return $this->render('AdminBundle:Default:brouillons.html.twig');
     }
 
     /**
      * @Route ("/articles",name="articles")
      */
-    public function GetArticles() {
+    public function getArticles() {
         //ici je récupere toutes les news
         $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
         $listNews = $repository->findAll();
 
         return $this->render('AdminBundle:Default:articles.html.twig', array('listNews' => $listNews));
     }
-
+    
     /**
+     * @Route("/add",name="add")
+     */
+    public function addArticle(Request $request){
+        //Je crée un nouvel objet
+        $article = new News();
+        //Je crée le formulaire à partir de la classe NewsType
+        $news= $this->createForm(NewsType::class,$article);
+        //quand le formulaire est envoyé on envoi un nouvel article
+        if ($request->getMethod() == 'POST') {
+            $news->handleRequest($request);
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($article);
+            $em->flush();
+            return $this->redirectToRoute('articles');
+        }
+    
+        return $this->render('AdminBundle:Default:newarticle.html.twig' , array('form' => $news->createView()));
+     
+    }
+    
+     /**
+     * @Route("/modif/{id}", name="modif")
+     */
+    public function modifArticle($id, Request $request) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $article = $em->find('AdminBundle:News', $id);
+        $news= $this->createForm(NewsType::class,$article);
+         if ($request->getMethod() == 'POST') {
+            $news->handleRequest($request);
+            $em->merge($article);
+            $em->flush();
+            return $this->redirectToRoute('articles');
+        }
+        return $this->render('AdminBundle:Default:modifarticle.html.twig' , array('form' => $news->createView()));
+        
+    }
+     /**
      * @Route("/supp/{id}", name="supp")
      */
-    public function suppArticles($id) {
+    public function suppArticle($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $news = $em->find('AdminBundle:News', $id);
         //ici je récupère l'entité par l'idée
@@ -116,5 +155,6 @@ class AdminViewController extends Controller {
         return $this->redirectToRoute('articles');
         //ci-dessus une fois mon article supprimé je redirige vers la vue articles
     }
-
+    
+    
 }

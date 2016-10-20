@@ -1,7 +1,7 @@
 <body>
     <nav>
     <ul>
-        <li><a href="">Ajouter un article</a></li>
+        <li><a href="{{path("add")}}">Ajouter un article</a></li>
         <li><a href="{{path("brouillons")}}">Voir mes brouillons</a></li>
         <li><a href="{{path("profil")}}">Voir profil</a></li>
     </ul>
@@ -22,7 +22,7 @@
             </div>
             </div>
             <div>
-           <a href="">Modifier un article</a>
+           <a href="{{path("modif",{"id":news.id})}}">Modifier un article</a>
              <a href="{{path("supp",{"id":news.id})}}">Supprimer un article</a>
      
             </div>
