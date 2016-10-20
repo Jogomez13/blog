@@ -35,7 +35,6 @@ class AdminViewController extends Controller {
                     'last_username' => $authenticationUtils->getLastUsername(),
                     'error' => $authenticationUtils->getLastAuthenticationError(),
         ));
-        
     }
 
     /**
@@ -43,30 +42,29 @@ class AdminViewController extends Controller {
      * 
      */
     public function GetInscription() {
+        //TEST//
+
         return $this->render('AdminBundle:Default:inscription.html.twig');
     }
-       
-     /**
+
+    /**
      * @Route("/profil", name="profil")
      */
-    public function GetProfil()
-    {
+    public function GetProfil() {
         return $this->render('AdminBundle:Default:profil.html.twig');
     }
-    
-     /**
+
+    /**
      * @Route("/modifprofil", name="modifprofil")
      */
-    public function GetModifprofil()
-    {
+    public function GetModifprofil() {
         return $this->render('AdminBundle:Default:modifprofil.html.twig');
     }
-    
+
     /**
      * @Route("/brouillions", name="brouillons")
      */
-    public function GetBrouillons()
-    {
+    public function GetBrouillons() {
         return $this->render('AdminBundle:Default:brouillons.html.twig');
     }
 
