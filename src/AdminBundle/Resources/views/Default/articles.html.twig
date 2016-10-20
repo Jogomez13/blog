@@ -1,35 +1,38 @@
 <body>
     <nav>
-    <ul>
-        <li><a href="{{path("add")}}">Ajouter un article</a></li>
-        <li><a href="{{path("brouillons")}}">Voir mes brouillons</a></li>
-        <li><a href="{{path("profil")}}">Voir profil</a></li>
-    </ul>
-</nav>
-            <h2>Articles</h2>
-        <!--Ci dessous je récupère les articles-->
-        {% for news in listNews%}
-     <div>
+        <ul>
+
+            <li><a href="{{path("add")}}">Ajouter un article</a></li>
+            <li><a href="{{path("brouillons")}}">Voir mes brouillons</a></li>
+            <li><a href="{{path("profil")}}">Voir profil</a></li>
+        </ul>
+    </nav>
+    <h2>Articles</h2>
+    <!--Ci dessous je récupère les articles-->
+    {% for news in listNews%}
+        {%if news.etatpublication == "publie"%}
+        <div>
             <div>
-  <div>
-    <div>
-            <p>{{news.titre}}</p>
-            <p>{{news.image}}</p>
-            <p>{{news.article}}</p>
-            <p>{{news.auteur}}</p>
-            <p>{{news.date|date("m/d/Y")}}</p>
-            <p>{{news.categorie}}</p>
-            <p>{{news.etatpublication}}</p>
-            </div>
-            </div>
+                <div>
+                    <div>
+                        <p>{{news.titre}}</p>
+                        <p>{{news.image}}</p>
+                        <p>{{news.article}}</p>
+                        <p>{{news.auteur}}</p>
+                        <p>{{news.date|date("m/d/Y")}}</p>
+                        <p>{{news.categorie}}</p>
+                        <p>{{news.etatpublication}}</p>
+                    </div>
+                </div>
             </div>
             <div>
-           <a href="{{path("modif",{"id":news.id})}}">Modifier un article</a>
-             <a href="{{path("supp",{"id":news.id})}}">Supprimer un article</a>
-     
+                <a href="{{path("modif",{"id":news.id})}}">Modifier un article</a>
+                <a href="{{path("supp",{"id":news.id})}}">Supprimer un article</a>
+
             </div>
-             </div>
-        {% endfor %}
-        
-             
+        </div>
+                {%endif%}
+    {% endfor %}
+
+
 </body>
