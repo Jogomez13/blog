@@ -67,5 +67,29 @@ class AdminViewController extends Controller {
     public function GetBrouillons() {
         return $this->render('AdminBundle:Default:brouillons.html.twig');
     }
-
+    
+    /**
+     * @Route ("/articles",name="articles")
+     */
+    public function GetArticles(){
+       //ici je récupere toutes les news
+       $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
+       $listNews = $repository->findAll();
+       
+        return $this->render('AdminBundle:Default:articles.html.twig',array('listNews' => $listNews));
+    }
+     /**
+     * @Route("/supp/{id}", name="supp")
+     */
+    public function suppArticles($id){
+        $em = $this->getDoctrine()->getEntityManager();
+        $news = $em->find('AdminBundle:News', $id);
+        //ici je récupère l'entité par l'idée
+        $em->remove($news);
+        //ici je la supprimé
+        $em->flush();
+        //affecte tous les changements en base de données
+        return $this->redirectToRoute('articles');
+        //ci-dessus une fois mon article supprimé je redirige vers la vue articles
+    }
 }
