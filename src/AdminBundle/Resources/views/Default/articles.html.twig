@@ -1,0 +1,33 @@
+<body>
+    <nav>
+    <ul>
+        <li><a href="">Ajouter un article</a></li>
+        <li><a href="{{path("brouillons")}}">Voir mes brouillons</a></li>
+        <li><a href="{{path("profil")}}">Voir profil</a></li>
+    </ul>
+</nav>
+            <h2>Articles</h2>
+        <!--Ci dessous je récupère les articles-->
+        {% for news in listNews%}
+     <div>
+            <div>
+  <div>
+    <div>
+            <p>{{news.titre}}</p>
+            <p>{{news.image}}</p>
+            <p>{{news.article}}</p>
+            <p>{{news.auteur}}</p>
+            <p>{{news.date|date("m/d/Y")}}</p>
+            </div>
+            </div>
+            </div>
+            <div>
+           <a href="">Modifier un article</a>
+             <a href="{{path("supp",{"id":news.id})}}">Supprimer un article</a>
+     
+            </div>
+             </div>
+        {% endfor %}
+        
+             
+</body>
