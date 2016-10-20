@@ -34,6 +34,13 @@ class News
      * @ORM\Column(name="image", type="string", length=255)
      */
     private $image;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="article", type="string", length=255)
+     */
+    private $article;
 
     /**
      *
@@ -120,6 +127,30 @@ class News
     public function getImage()
     {
         return $this->image;
+    }
+    
+    /**
+     * Set article
+     *
+     * @param string $article
+     *
+     * @return News
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+    
+     /**
+     * Get article
+     *
+     * @return string
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 
     /**

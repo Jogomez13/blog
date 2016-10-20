@@ -35,7 +35,6 @@ class AdminViewController extends Controller {
                     'last_username' => $authenticationUtils->getLastUsername(),
                     'error' => $authenticationUtils->getLastAuthenticationError(),
         ));
-        
     }
 
     /**
@@ -43,31 +42,54 @@ class AdminViewController extends Controller {
      * 
      */
     public function GetInscription() {
+        //TEST//
+
         return $this->render('AdminBundle:Default:inscription.html.twig');
     }
-       
-     /**
+
+    /**
      * @Route("/profil", name="profil")
      */
-    public function GetProfil()
-    {
+    public function GetProfil() {
         return $this->render('AdminBundle:Default:profil.html.twig');
     }
-    
-     /**
+
+    /**
      * @Route("/modifprofil", name="modifprofil")
      */
-    public function GetModifprofil()
-    {
+    public function GetModifprofil() {
         return $this->render('AdminBundle:Default:modifprofil.html.twig');
     }
-    
+
     /**
      * @Route("/brouillions", name="brouillons")
      */
-    public function GetBrouillons()
-    {
+    public function GetBrouillons() {
         return $this->render('AdminBundle:Default:brouillons.html.twig');
     }
-
+    
+    /**
+     * @Route ("/articles",name="articles")
+     */
+    public function GetArticles(){
+       //ici je récupere toutes les news
+       $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
+       $listNews = $repository->findAll();
+       
+        return $this->render('AdminBundle:Default:articles.html.twig',array('listNews' => $listNews));
+    }
+     /**
+     * @Route("/supp/{id}", name="supp")
+     */
+    public function suppArticles($id){
+        $em = $this->getDoctrine()->getEntityManager();
+        $news = $em->find('AdminBundle:News', $id);
+        //ici je récupère l'entité par l'idée
+        $em->remove($news);
+        //ici je la supprimé
+        $em->flush();
+        //affecte tous les changements en base de données
+        return $this->redirectToRoute('articles');
+        //ci-dessus une fois mon article supprimé je redirige vers la vue articles
+    }
 }

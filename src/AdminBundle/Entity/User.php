@@ -25,6 +25,20 @@ class User implements UserInterface, \Serializable {
     /**
      * @var string
      *
+     * @ORM\Column(name="nom", type="string", length=100)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=100)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="username", type="string", length=100)
      */
     private $username;
@@ -57,6 +71,46 @@ class User implements UserInterface, \Serializable {
      */
     public function getId() {
         return $this->id;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    function getNom() {
+        return $this->nom;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    function getPrenom() {
+        return $this->prenom;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return User
+     */
+    function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string prenom
+     *
+     * @return User
+     */
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
     }
 
     /**
