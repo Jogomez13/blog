@@ -18,7 +18,7 @@
 {# lien ver la page ordinateur #}   <li><a href="{{ path ("ordinateur")}}">Ordinateur</a></li>
 {# lien ver la page tablette   #}   <li><a href="{{ path ("tablette")}}">Tablette</a></li>
                     
-                    <li><a href="">Espace Membre</a></li>
+                    <li><a href="{{ path ("admin")}}">Espace Membre</a></li>
                     
                     <ul>{#debut du sous menu pour espace membre#}
                                     {%if app.user.username is defined%}
@@ -36,6 +36,8 @@
 
 
 {%block body %}
+    <body>
+    </body>
 {%endblock %}  
         
             

@@ -18,7 +18,7 @@ use AdminBundle\Entity\User;
 class AdminViewController extends Controller {
 
     /**
-     * @Route("/admin")
+     * @Route("/admin", name="admin")
      */
     public function getAdmin() {
         return $this->render('AdminBundle:Default:admin.html.twig');

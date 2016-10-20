@@ -62,6 +62,12 @@ class Etatpublication
     {
         return $this->etat;
     }
+    
+    //Ici j'ai fait clique droit insérer du code, puis override puis to string
+    public function __toString() {
+        
+        return $this->getEtat(); 
+    }
 
 
 }
