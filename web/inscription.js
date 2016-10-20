@@ -24,7 +24,7 @@ $('document').ready(function () {
                 alert('Ils vous manquent des informations !');
             }
         } else {
-            alert('Les mots de passes ne correspondent pas !');
+            alert('Les mots de passe ne correspondent pas !');
         }
     });
 });
