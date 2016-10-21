@@ -1,6 +1,8 @@
-<nav>
+<body>
+    <nav>
     <ul>
         <li><a href="{{path("add")}}">Ajouter une article</a></li>
+        <li><a href="{{path("articles")}}">Voir articles</a></li>
         <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
         <li><a href="{{path("modifprofil")}}">Modifier mon profil</a></li>
         <li><a href="{{path("admin")}}">Retour page admin</a></li>
@@ -8,3 +10,30 @@
 </nav>
             
     <h2>Profil</h2>
+<!--Ci dessous je récupère le profil-->
+    {% for profil in monProfil%}
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <p>{{profil.username}}</p>
+                        <p>{{profil.nom}}</p>
+                        <p>{{profil.prenom}}</p>
+                        <p>{{profil.pseudo}}</p>
+                        <p>{{profil.avatar}}</p>
+                        <p>{{profil.password}}</p>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a href="{{path("modifprofil")}}">Modifier mon profil</a>
+                
+
+            </div>
+        </div>
+            
+    {% endfor %}
+    
+</body>
