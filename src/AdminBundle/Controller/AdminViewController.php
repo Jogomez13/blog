@@ -87,13 +87,6 @@ class AdminViewController extends Controller {
     }
 
     /**
-     * @Route("/brouillions", name="brouillons")
-     */
-    public function getBrouillons() {
-        return $this->render('AdminBundle:Default:brouillons.html.twig');
-    }
-
-    /**
      * @Route ("/articles",name="articles")
      */
     public function getArticles() {
@@ -155,6 +148,18 @@ class AdminViewController extends Controller {
         return $this->redirectToRoute('articles');
         //ci-dessus une fois mon article supprimé je redirige vers la vue articles
     }
+    
+     /**
+     * @Route ("/brouillons",name="brouillons")
+     */
+    public function getBrouillons() {
+        //ici je récupere toutes les brouillons
+        $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
+        $listBrouillons = $repository->findAll();
+
+        return $this->render('AdminBundle:Default:brouillons.html.twig', array('listBrouillons' => $listBrouillons));
+    }
+    
     
     
 }
