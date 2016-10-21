@@ -5,6 +5,7 @@ namespace AdminBundle\Controller;
 use AdminBundle\Entity\News;
 use AdminBundle\Entity\User;
 use AdminBundle\Form\NewsType;
+use AdminBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -71,20 +72,6 @@ class AdminViewController extends Controller {
             return $response;
         }
         return $this->render('AdminBundle:Default:inscription.html.twig');
-    }
-
-    /**
-     * @Route("/profil", name="profil")
-     */
-    public function getProfil() {
-        return $this->render('AdminBundle:Default:profil.html.twig');
-    }
-
-    /**
-     * @Route("/modifprofil", name="modifprofil")
-     */
-    public function getModifprofil() {
-        return $this->render('AdminBundle:Default:modifprofil.html.twig');
     }
 
     /**
@@ -167,6 +154,34 @@ class AdminViewController extends Controller {
         return $this->render('AdminBundle:Default:brouillons.html.twig', array('listBrouillons' => $listBrouillons));
     }
     
+     /**
+     * @Route("/profil", name="profil")
+     */
+    public function getProfil() {
+        //ici je récupere toutes mon profil
+        $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:User');
+        $monProfil = $repository->findBy(array('pseudo' => $this->getUser()->getPseudo()));
+
+        return $this->render('AdminBundle:Default:profil.html.twig', array('monProfil' => $monProfil));
+    }
     
+    /**
+     * @Route("/modifprofil", name="modifprofil")
+     */
+    public function getModifprofil(Request $request) 
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $profil= $this->createForm(UserType::class, $this->getUser());
+         if ($request->getMethod() == 'POST') {
+            $profil->handleRequest($request);
+            $em->merge($this->getUser());
+            $em->flush();
+            return $this->redirectToRoute('modifprofil');
+        }
+        return $this->render('AdminBundle:Default:modifprofil.html.twig' , array('form' => $profil->createView()));
+        
+    }
+
     
 }
