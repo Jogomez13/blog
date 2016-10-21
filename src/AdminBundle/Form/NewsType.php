@@ -19,7 +19,6 @@ class NewsType extends AbstractType {
                 ->add('titre')
                 ->add('image')
                 ->add('article')
-                ->add('date', DateTimeType::class)
                 ->add('categorie')
                 ->add('etatpublication')
                 ->add('Envoyer', SubmitType::class)

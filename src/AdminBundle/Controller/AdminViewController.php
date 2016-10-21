@@ -114,6 +114,8 @@ class AdminViewController extends Controller {
             //Met le pseudo dans l'utilisateur courant dans le champ auteur
             
             $article->setAuteur($this->getUser()->getPseudo());
+            $article->setDate(new \DateTime());
+            
             $em->persist($article);
             $em->flush();
             return $this->redirectToRoute('articles');
