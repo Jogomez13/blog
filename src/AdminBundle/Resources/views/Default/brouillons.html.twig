@@ -1,8 +1,33 @@
 <nav>
     <ul>
-        <li><a href="{{path("newarticle")}}">Ajouter une article</a></li>
+        <li><a href="{{path("add")}}">Ajouter une article</a></li>
         <li><a href="{{path("profil")}}">Voir profil</a></li>
         <li><a href="{{path("admin")}}">Retour page d'admin</a></li>
     </ul>
     <nav>
                 <h2>Mes brouillons</h2>
+                <!--Ci dessous je récupère les articles-->
+    {% for brouillon in listBrouillons%}
+        {%if brouillon.etatpublication == "brouillon"%}
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <p>{{brouillon.titre}}</p>
+                        <p>{{brouillon.image}}</p>
+                        <p>{{brouillon.article}}</p>
+                        <p>{{brouillon.auteur}}</p>
+                        <p>{{brouillon.date|date("m/d/Y")}}</p>
+                        <p>{{brouillon.categorie}}</p>
+                        <p>{{brouillon.etatpublication}}</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a href="{{path("modif",{"id":brouillon.id})}}">Modifier un brouillon</a>
+                <a href="{{path("supp",{"id":brouillon.id})}}">Supprimer un brouillon</a>
+
+            </div>
+        </div>
+                {%endif%}
+    {% endfor %}

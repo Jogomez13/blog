@@ -1,0 +1,100 @@
+@charset "UTF-8";
+/* STYLE POUR LE HEADER */
+header {
+  background-image: url("../img/header.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  /*  permet de pas repeter l'image */
+  background-size: contain;
+  /*  permet de centre l'image ?!?! */
+  height: 300px;
+  /* taille de la hauteur du header */
+  width: 100%;
+  /* taille de la largeur du header */ }
+
+/* FIN STYLE POUR LE HEADER */
+/* STYLE POUR LE TITRE PRINCIPAL */
+#titreprincipal {
+  font-family: 'Lobster', cursive;
+  /*  style ecriture du texte       */
+  text-align: center;
+  /*  Alignement du titre principal dans le header */
+  font-size: 60px;
+  /* taille du titre principal */ }
+
+/* FIN STYLE POUR LE TITRE PRINCIPAL */
+/* STYLE POUR LA BARRE DE NAV */
+/*container de la barre de nav*/
+.containernav {
+  background-color: black;
+  height: 60px; }
+
+/*responsive md du container nav*/
+@media (max-width: 992px) {
+  .containernav {
+    height: 200px; } }
+/* classe liste nav */
+.groupelistenav {
+  display: flex;
+  justify-content: space-around;
+  margin-left: -60px; }
+
+/* responsive md du groupe liste nav */
+@media (max-width: 992px) {
+  .groupelistenav {
+    display: flex;
+    flex-direction: column;
+    text-align: center; } }
+/* éléments de la barre de nav */
+.listenav {
+  padding-top: 10px;
+  list-style: none;
+  font-size: 25px; }
+
+/*liens des éléments de la nav*/
+.listenav a {
+  color: white; }
+
+.listenav a:hover {
+  color: white;
+  text-decoration: none; }
+
+.dropdown {
+  font-size: 40px; }
+
+h1 {
+  font-size: 30px; }
+
+.container {
+  font-family: 'Lobster', cursive;
+  width: 500px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 70px;
+  background-color: #B22222; }
+
+.textconnection {
+  font-size: 38px;
+  font-family: 'Lobster', cursive;
+  margin-bottom: 20px; }
+
+.container img {
+  width: 120px;
+  height: 120px;
+  margin-top: -70px;
+  margin-bottom: 30px; }
+
+.btn-login {
+  padding: 15px 30px;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  color: white;
+  background-color: #32BF9E;
+  margin-bottom: 20px; }
+
+label {
+  font-size: 32px;
+  color: white; }
+
+/*# sourceMappingURL=style.css.map */

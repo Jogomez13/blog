@@ -10,35 +10,49 @@ class BlogController extends Controller {
     /**
      * @Route("/accueil", name="accueil")
      */
-    public function indexAction()
+    public function getAccueil()
     {
         return $this->render('BlogBundle:Default:accueil.html.twig');
     }
-    /**
-     * @Route("/telephone", name="telephone")
+    
+     /**
+     * @Route ("/ordinateur",name="ordinateur")
      */
-    public function indexTelephone()
-    {
-        return $this->render('BlogBundle:Default:telephone.html.twig');
+    public function getArticlesOrdi() {
+        //ici je récupere toutes les news ordinateur
+        $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
+        $listNews = $repository->findAll();
+
+        return $this->render('BlogBundle:Default:ordi.html.twig', array('listNews' => $listNews));
     }
-    /**
-     * @Route("/tablette", name="tablette")
+    
+     /**
+     * @Route ("/tablette",name="tablette")
      */
-    public function indexTablette()
-    {
-        return $this->render('BlogBundle:Default:tablette.html.twig');
+    public function getArticlesTablette() {
+        //ici je récupere toutes les news tablette
+        $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
+        $listNews = $repository->findAll();
+
+        return $this->render('BlogBundle:Default:tablette.html.twig', array('listNews' => $listNews));
     }
+    
     /**
-     * @Route("/ordinateur", name="ordinateur")
+     * @Route ("/telephone",name="telephone")
      */
-    public function indexOrdi()
-    {
-        return $this->render('BlogBundle:Default:ordi.html.twig');
+    public function getArticlesTelephone() {
+        //ici je récupere toutes les news telephone
+        $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
+        $listNews = $repository->findAll();
+
+        return $this->render('BlogBundle:Default:telephone.html.twig', array('listNews' => $listNews));
     }
+    
+    
     /**
      * @Route("/contact", name="contact")
      */
-    public function indexContact()
+    public function getContact()
     {
         return $this->render('BlogBundle:Default:contact.html.twig');
     }

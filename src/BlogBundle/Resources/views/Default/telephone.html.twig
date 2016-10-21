@@ -1,20 +1,30 @@
 {% extends "BlogBundle:Default:accueil.html.twig" %}	
 {%block body %}
     
- <!-- partie téléphone-->
-
-   <div class="container-fluid">
-    <h2>Téléphone</h2>
-    <div class="col-sm-8 col-sm-offset-2">
-      <div class="thumbnail">
-        <h3>Samsung</h3>
-        <img class="taillePhoto" src="{{ asset('../web/bundles/framework/img/portable.jpg') }}">
-          <p class="article">Le Lorem Ipsum est simplement du faux texte employé
-     dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux
-     texte standard de l'imprimerie depuis les années 1500, quand un peintre
-     anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices</p>
-       </div>
-      </div>
-  </div>
-
+ <h2>Téléphone</h2>
+ <img src=""/>
+ <!--Ci dessous je récupère les articles telephone publiés-->
+    {% for news in listNews%}
+        
+        {%if news.etatpublication == "publie"%}
+        {%if news.categorie== "telephone"%}
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <p>{{news.titre}}</p>
+                        <p>{{news.image}}</p>
+                        <p>{{news.article}}</p>
+                        <p>{{news.auteur}}</p>
+                        <p>{{news.date|date("m/d/Y")}}</p>
+                        <p>{{news.categorie}}</p>
+                        <p>{{news.etatpublication}}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+                {%endif%}
+                {%endif%}
+    {% endfor %}
 {%endblock%}

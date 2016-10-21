@@ -1,0 +1,80 @@
+/* STYLE POUR LE HEADER */
+header{
+  background-image: url('../img/header.png');
+  background-position: center;
+  background-repeat: no-repeat;                /*  permet de pas repeter l'image */
+  background-size: contain;                   /*  permet de centre l'image ?!?! */
+  height: 300px;                              /* taille de la hauteur du header */
+  width: 100%;                                /* taille de la largeur du header */
+  
+}
+/* FIN STYLE POUR LE HEADER */
+
+
+/* STYLE POUR LE TITRE PRINCIPAL */
+#titreprincipal{
+  font-family: 'Lobster', cursive;            /*  style ecriture du texte       */
+  text-align: center;                         /*  Alignement du titre principal dans le header */
+  font-size: 60px;                            /* taille du titre principal */
+}
+/* FIN STYLE POUR LE TITRE PRINCIPAL */
+
+
+/* STYLE POUR LA BARRE DE NAV */
+
+/*container de la barre de nav*/
+
+.containernav{
+    background-color: black;
+    height: 60px;
+}
+
+/*responsive md du container nav*/
+
+@media(max-width:992px){
+  .containernav{
+    height: 200px;
+  }
+}
+
+/* classe liste nav */
+
+.groupelistenav{
+  display:flex;
+  justify-content: space-around;
+  margin-left: -60px;
+}
+
+/* responsive md du groupe liste nav */
+
+ @media(max-width:992px){
+   .groupelistenav{
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+   }
+ }
+
+/* éléments de la barre de nav */
+
+.listenav{
+padding-top: 10px;
+list-style: none;
+font-size: 25px;
+}
+
+/*liens des éléments de la nav*/
+
+.listenav a{
+color:white;
+}
+
+.listenav a:hover{
+color:white; 
+text-decoration: none;
+}
+
+
+.dropdown{
+ font-size:40px;
+}

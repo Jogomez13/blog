@@ -3,12 +3,12 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Entity\News;
+use AdminBundle\Entity\User;
 use AdminBundle\Form\NewsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use AdminBundle\Entity\User;
 
 /**
  * Description of AdminViewController
@@ -21,6 +21,7 @@ class AdminViewController extends Controller {
      * @Route("/admin", name="admin")
      */
     public function getAdmin() {
+        
         return $this->render('AdminBundle:Default:admin.html.twig');
     }
 
@@ -87,13 +88,6 @@ class AdminViewController extends Controller {
     }
 
     /**
-     * @Route("/brouillions", name="brouillons")
-     */
-    public function getBrouillons() {
-        return $this->render('AdminBundle:Default:brouillons.html.twig');
-    }
-
-    /**
      * @Route ("/articles",name="articles")
      */
     public function getArticles() {
@@ -108,6 +102,7 @@ class AdminViewController extends Controller {
      * @Route("/add",name="add")
      */
     public function addArticle(Request $request){
+        
         //Je crée un nouvel objet
         $article = new News();
         //Je crée le formulaire à partir de la classe NewsType
@@ -116,6 +111,9 @@ class AdminViewController extends Controller {
         if ($request->getMethod() == 'POST') {
             $news->handleRequest($request);
             $em = $this->getDoctrine()->getEntityManager();
+            //Met le pseudo dans l'utilisateur courant dans le champ auteur
+            
+            $article->setAuteur($this->getUser()->getPseudo());
             $em->persist($article);
             $em->flush();
             return $this->redirectToRoute('articles');
@@ -155,6 +153,18 @@ class AdminViewController extends Controller {
         return $this->redirectToRoute('articles');
         //ci-dessus une fois mon article supprimé je redirige vers la vue articles
     }
+    
+     /**
+     * @Route ("/brouillons",name="brouillons")
+     */
+    public function getBrouillons() {
+        //ici je récupere toutes les brouillons
+        $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
+        $listBrouillons = $repository->findAll();
+
+        return $this->render('AdminBundle:Default:brouillons.html.twig', array('listBrouillons' => $listBrouillons));
+    }
+    
     
     
 }
