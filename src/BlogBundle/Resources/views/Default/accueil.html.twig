@@ -1,48 +1,56 @@
 <!DOCTYPE html>
-    <html lang="fr">
+<html lang="fr">
     <head>  
-                                                <meta charset="utf-8">
-{# lien importation du fichier du style css #}  <link href="{{ asset('../web/bundles/css/style.css') }}" rel="stylesheet" />
-{# lien iportation du fichier du boostrap   #}  <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />      
+        <meta charset="utf-8">
+        <link href="{{ asset('../web/bundles/css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />      
     </head>
-{# titre qui se trouve dans l'onglet de la page #} <title>Blog</title>
-            
-            
-<header>{# debut de la balise header #}
-    <h1 id='titreprincipal'>Le blog de l'actualité high tech</h1>
-</header>{# fin de la balise header #}
-        
-{#debut de la bar de navigation#}<nav class="navbar navbar-inverse">
-                                  <ul class="nav navbar-nav">
-{# lien ver la page ordinateur #}   <li  class="active"><a href="{{ path ("telephone")}}">Téléphone</a></li>
-{# lien ver la page ordinateur #}   <li><a href="{{ path ("ordinateur")}}">Ordinateur</a></li>
-{# lien ver la page tablette   #}   <li><a href="{{ path ("tablette")}}">Tablette</a></li>
-                    
-                    <li><a href="{{ path ("admin")}}">Espace Membre</a></li>
-                    
-                    <ul>{#debut du sous menu pour espace membre#}
-                                    {%if app.user.username is defined%}
-{# lien ver la page deconnection#}  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><a href="{{ path ("logout")}}">Deconnexion<span class="caret"></span></a>
-
-                                    {%else%}
-{# lien ver la page connection  #}  <li class="dropdown-menu"><a href="{{ path ("connexion")}}">Connexion</a></li>
-                                    {%endif%}
-                        
-{# lien ver la page inscription #}  <li class="menu"><a href="{{ path ("inscription")}}">Inscription</a></li>                       
-{# lien ver la page contact     #}  <li class="menu"><a href="{{ path ("contact")}}">Contact</a></li>
-                    </ul>{#fin du sous menu pour espace membre#}
-                </ul>
-            </nav>
+    <title>Blog</title>
 
 
-{%block body %}
+    <header>
+        <h1 id='titreprincipal'>Le blog de l'actualité high tech</h1>
+    </header>
+
+    <!--barre de nav bootstrap avec effet dropdown-->
+
+    <nav class="col-xs-12 containernav">
+        <ul class="groupelistenav">
+          <li class="listenav"><a href="{{ path('telephone') }}">Téléphone</a></li>
+          <li class="listenav"><a href="{{ path('ordinateur') }}">Ordinateur</a></li>
+          <li class="listenav"><a href="{{ path('tablette') }}">Tablette</a></li>
+          <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle"type="button"
+              data-toggle="dropdown" class="dropdown">Espace membre
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                      
+                      
+                      {%if app.user.username is defined%}
+                      <li><a href="{{ path('admin') }}">Admin</a></li>
+                      <li><a href="{{ path('logout') }}">Deconnexion</a></li>
+                      {%else%}
+                      <li><a href="{{ path('connexion') }}">Connexion</a></li>
+                      <li><a href="{{ path('inscription') }}">Inscription</a></li>
+                      {%endif%}
+                      <li><a href="{{ path('contact') }}">Contact</a></li>
+                      
+                  </ul>
+         </div>
+        </ul>
+
+   <!--Block sections ordinateur/tablette/portable-->
+
+    {%block body %}
 <body>
 </body>
-{%endblock %}  
-        
-            
-{# lieux ou se trouve le copyright du blog plus les nom des createur et les lien des portfolios #}
-<footer> {# debut de la balise footer #}
-    <p class="copyright">Développé & propulsé par : <a href="http://www.driad.fr/">Charles-André PALADE</a><a href="http://jonathan-gomez.fr/">Jonathan GOMEZ</a><a href="http://thibaut-figueres.fr/"> Thibaut FIGUERES</a><p>et Gaston SABOY</p></p>     
-</footer>  {# fin de la balise footer #}
+    {%endblock %}  
+
+
+
+    <footer> 
+        <p class="copyright">Développé & propulsé par : <a href="http://www.driad.fr/"> Charles-André PALADE</a><a href="http://jonathan-gomez.fr/"> Jonathan GOMEZ</a><a href="http://thibaut-figueres.fr/"> Thibaut FIGUERES</a><a href=""> Gaston SABOY</a></p>     
+</footer>  
+<script type="text/javascript" src="{{asset('../vendor/twbs/bootstrap/js/tests/vendor/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('../vendor/twbs/bootstrap/dist/js/bootstrap.js')}}"></script>
 </html>
