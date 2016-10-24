@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Lobster");
 /* STYLE POUR LE HEADER */
 header {
   background-image: url("../img/header.png");
@@ -16,20 +17,24 @@ header {
 /* STYLE POUR LE TITRE PRINCIPAL */
 #titreprincipal {
   font-family: 'Lobster', cursive;
-  /*  style ecriture du texte       */
+  /*  style ecriture du texte */
   text-align: center;
   /*  Alignement du titre principal dans le header */
   font-size: 60px;
   /* taille du titre principal */ }
 
 /* FIN STYLE POUR LE TITRE PRINCIPAL */
+/* RESPONSIVE MD TITRE PRINCIPAL */
+@media (max-width: 992px) {
+  #titreprincipal {
+    font-size: 50px; } }
 /* STYLE POUR LA BARRE DE NAV */
-/*container de la barre de nav*/
+/* container barre de nav */
 .containernav {
   background-color: black;
   height: 60px; }
 
-/*responsive md du container nav*/
+/* responsive md container nav */
 @media (max-width: 992px) {
   .containernav {
     height: 200px; } }
@@ -39,7 +44,7 @@ header {
   justify-content: space-around;
   margin-left: -60px; }
 
-/* responsive md du groupe liste nav */
+/* responsive md groupe liste nav */
 @media (max-width: 992px) {
   .groupelistenav {
     display: flex;
@@ -49,6 +54,7 @@ header {
 .listenav {
   padding-top: 10px;
   list-style: none;
+  font-family: 'Lobster', cursive;
   font-size: 25px; }
 
 /*liens des éléments de la nav*/
@@ -62,12 +68,30 @@ header {
 .dropdown {
   font-size: 40px; }
 
+/* footer */
+.copyright {
+  text-align: center; }
+
+/* partie sections téléphone, ordinateur et tablette */
+.titresections {
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 40px; }
+
+p {
+  font-family: 'Lobster', cursive;
+  font-size: 17px; }
+
+.newtitre {
+  text-align: center;
+  font-size: 35px; }
+
 h1 {
   font-size: 30px; }
 
 .container {
   font-family: 'Lobster', cursive;
-  width: 500px;
+  width: 480px;
   text-align: center;
   margin: 0 auto;
   margin-top: 70px;
