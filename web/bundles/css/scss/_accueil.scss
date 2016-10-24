@@ -8,28 +8,37 @@ header{
   width: 100%;                                /* taille de la largeur du header */
   
 }
+
 /* FIN STYLE POUR LE HEADER */
 
 
 /* STYLE POUR LE TITRE PRINCIPAL */
+
 #titreprincipal{
-  font-family: 'Lobster', cursive;            /*  style ecriture du texte       */
+  font-family: 'Lobster', cursive;            /*  style ecriture du texte */
   text-align: center;                         /*  Alignement du titre principal dans le header */
-  font-size: 60px;                            /* taille du titre principal */
+   font-size: 60px;                          /* taille du titre principal */ 
 }
+
 /* FIN STYLE POUR LE TITRE PRINCIPAL */
 
+/* RESPONSIVE MD TITRE PRINCIPAL */
+@media(max-width:992px){
+#titreprincipal{
+    font-size:50px;
+    } 
+}
 
 /* STYLE POUR LA BARRE DE NAV */
 
-/*container de la barre de nav*/
+/* container barre de nav */
 
 .containernav{
     background-color: black;
     height: 60px;
 }
 
-/*responsive md du container nav*/
+/* responsive md container nav */
 
 @media(max-width:992px){
   .containernav{
@@ -45,7 +54,7 @@ header{
   margin-left: -60px;
 }
 
-/* responsive md du groupe liste nav */
+/* responsive md groupe liste nav */
 
  @media(max-width:992px){
    .groupelistenav{
@@ -60,6 +69,7 @@ header{
 .listenav{
 padding-top: 10px;
 list-style: none;
+font-family: 'Lobster', cursive;
 font-size: 25px;
 }
 
@@ -77,4 +87,10 @@ text-decoration: none;
 
 .dropdown{
  font-size:40px;
+}
+
+/* footer */
+
+.copyright{
+ text-align:center;
 }

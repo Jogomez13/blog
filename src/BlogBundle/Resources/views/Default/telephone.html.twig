@@ -1,29 +1,35 @@
-{% extends "BlogBundle:Default:accueil.html.twig" %}	
+{% extends "BlogBundle:Default:accueil.html.twig" %}
 {%block body %}
-    
- <h2>Téléphone</h2>
- <img src=""/>
- <!--Ci dessous je récupère les articles telephone publiés-->
-    {% for news in listNews%}
-        
-        {%if news.etatpublication == "publie"%}
-        {%if news.categorie== "telephone"%}
-        <div>
-            <div>
-                <div>
+
+        <h2 class="titresections">Téléphone</h2>
+    <!--Ci dessous je récupère les articles telephone publiés-->
+       {% for news in listNews%}
+
+           {%if news.etatpublication == "publie"%}
+           {%if news.categorie== "telephone"%}
                     <div>
-                        <p>{{news.titre}}</p>
-                        <p>{{news.image}}</p>
-                        <p>{{news.article}}</p>
-                        <p>{{news.auteur}}</p>
-                        <p>{{news.date|date("m/d/Y")}}</p>
-                        <p>{{news.categorie}}</p>
-                        <p>{{news.etatpublication}}</p>
+                        <div>
+                            <div class="container-fluid">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                <div class="thumbnail">
+                                    <p class="newtitre">{{news.titre}}</p>
+                                    <p class="newimage">{{news.image}}</p>
+                                    <p class="newarticle">{{news.article}}</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                    <p class="newauteur">{{news.auteur}}</p>
+                                    <p class="newdate">{{news.date|date("m/d/Y")}}</p>
+                                    <p class="newcategorie">{{news.categorie}}</p>
+                                    <p class="etatpublication">{{news.etatpublication}}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            
-        </div>
+
+
+
+
                 {%endif%}
                 {%endif%}
     {% endfor %}
