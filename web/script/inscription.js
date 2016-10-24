@@ -12,7 +12,7 @@ $('document').ready(function () {
                     url: 'inscription',
                     type: 'POST',
                     data: 'username=' + $('#email').val() + '&password=' + $('#password').val() +
-                            '&nom=' + $('#nom').val() + '&prenom=' + $('#prenom').val(),
+                            '&nom=' + $('#nom').val() + '&prenom=' + $('#prenom').val() + '&pseudo=' + $('#pseudo').val(),
                     dataType: 'text',
                     success: function (data, textStatus, jqXHR) {
                         var obj = $.parseJSON(data);
