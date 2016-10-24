@@ -121,4 +121,48 @@ label {
   font-size: 32px;
   color: white; }
 
+.titradmin {
+  text-align: center;
+  margin-top: 50px; }
+
+#navadmin {
+  background-color: black; }
+
+#navadmin li a {
+  color: white;
+  font-size: 1.2em; }
+
+p {
+  font-size: 1.2em; }
+
+@media (max-width: 992px) {
+  .thumbnail {
+    margin-left: 100px; } }
+.liste {
+  background-color: white; }
+
+.btn {
+  background-color: white; }
+
+.modif {
+  color: black;
+  font-size: 1.2em;
+  margin-right: 150px; }
+
+@media (max-width: 992px) {
+  .modif {
+    margin-right: 20px; } }
+.supp {
+  color: black;
+  font-size: 1.2em; }
+
+.modifprofil {
+  color: black;
+  font-size: 1.2em;
+  padding-bottom: 50px; }
+
+label {
+  font-size: 18px;
+  color: black; }
+
 /*# sourceMappingURL=style.css.map */
