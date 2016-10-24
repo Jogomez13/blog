@@ -1,13 +1,48 @@
+<html>
+
+<head>
+       <meta charset="utf-8">
+       <title>Admin</title>
+       <link href="{{ asset('../web/bundles/css/style.css') }}" rel="stylesheet" />
+       <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />      
+       {%block style %}
+{#Ici je vais rajouter les css qui s'appliquent uniquement à la page d'admin   #}
+        {%endblock%}
+</head>
+     
 <body>
-    <nav>
-    <ul>
-        <li><a href="{{path("articles")}}">Voir les articles</a></li>
-        <li><a href="{{path("brouillons")}}">Voir mes brouillons</a></li>
-        <li><a href="{{path("profil")}}">Voir profil</a></li>
-    </ul>
-</nav>
-    <h1>Admin</h1>
+    <div id="container">
+   
+   <!--nav-horizontal-->
+           
+   <nav class="navbar-hor navbar-default" id="navadmin">
+ <div class="container-fluid">
+
+   <div class="collapse navbar-collapse">
+     <ul class="nav navbar-nav navbar-right">
+         {%block nav %}
+              <li><a href="{{path("add")}}">Ajouter un article</a></li>
+              <li><a href="{{path("articles")}}">Voir les articles</a></li>
+              <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
+              <li><a href="{{path("profil")}}">Voir profil</a></li>
+              <li><a href="{{path("accueil")}}">Retour sur le site</a></li>
+              {%endblock%}
+          </ul>
+   </div>
+ </div>
+</nav> 
+        {% block articles %}
+            
+                <h1 class="titradmin">Bienvenue sur votre Espace Membre</h1>
+    
+        
+            
+ 
+
+    {% endblock %}
         
         
              
 </body>
+
+</html>

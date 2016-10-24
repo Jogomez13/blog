@@ -1,12 +1,12 @@
 {% extends "BlogBundle:Default:accueil.html.twig" %}
 {%block body %}
 
-        <h2 class="titresections">Téléphone</h2>
+        <h2 class="titresections">Ordinateur</h2>
     <!--Ci dessous je récupère les articles telephone publiés-->
        {% for news in listNews%}
 
            {%if news.etatpublication == "publie"%}
-           {%if news.categorie== "telephone"%}
+           {%if news.categorie== "ordinateur"%}
                     <div>
                         <div>
                             <div class="container-fluid">

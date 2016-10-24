@@ -1,12 +1,20 @@
-<body>
-    <nav>
-<ul>
+{% extends "AdminBundle:Default:admin.html.twig"%}
+     {%block style %}
+{#Ici je vais rajouter les css qui s'appliquent uniquement à la page modifarticle   #}
+        {%endblock%}
+
+            {%block nav %}
             <li><a href="{{path("add")}}">Ajouter une article</a></li>
             <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
             <li><a href="{{path("admin")}}">Retour page admin</a></li>
-    </ul>
-</nav>
-    <h2>Modifier article</h2>
+            <li><a href="{{path("accueil")}}">Retour sur le site</a></li>
+            {%endblock%}
+            
+            {% block articles %}
+    
+    <h1 class="titradmin">Modifier article</h1>
     {{form(form)}}
     
-</body>
+    
+            {%endblock%}
+    

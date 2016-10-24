@@ -1,38 +1,48 @@
-<body>
-    <nav>
-        <ul>
-
-            <li><a href="{{path("add")}}">Ajouter un article</a></li>
-            <li><a href="{{path("brouillons")}}">Voir mes brouillons</a></li>
-            <li><a href="{{path("profil")}}">Voir profil</a></li>
-        </ul>
-    </nav>
-    <h2>Articles</h2>
-    <!--Ci dessous je récupère les articles publiés-->
-    {% for news in listNews%}
-        {%if news.etatpublication == "publie"%}
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <p>{{news.titre}}</p>
-                        <p>{{news.image}}</p>
-                        <p>{{news.article}}</p>
-                        <p>{{news.auteur}}</p>
-                        <p>{{news.date|date("m/d/Y")}}</p>
-                        <p>{{news.categorie}}</p>
-                        <p>{{news.etatpublication}}</p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <a href="{{path("modif",{"id":news.id})}}">Modifier un article</a>
-                <a href="{{path("supp",{"id":news.id})}}">Supprimer un article</a>
-
-            </div>
-        </div>
-                {%endif%}
-    {% endfor %}
+{% extends "AdminBundle:Default:admin.html.twig"%}
+     {%block style %}
+{#Ici je vais rajouter les css qui s'appliquent uniquement à la page articles  #}
+        {%endblock%}
+        
+            {%block nav %}
+                <li><a href="{{path("add")}}">Ajouter un article</a></li>
+                <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
+                <li><a href="{{path("profil")}}">Voir profil</a></li>
+                <li><a href="{{path("admin")}}">Retour sur la page d'admin</a></li>
+                <li><a href="{{path("accueil")}}">Retour sur le site</a></li>
+              {%endblock%}
+    
+    {% block articles %}
+            
+        <h1 class="titradmin">Articles</h1>
+        <!--Ci dessous je récupère les articles publiés-->
+        {% for news in listNews%}
+            {%if news.etatpublication == "publie"%}
+                
+                        <div class="container liste">
+                            <div class="row">
+                                <div class="col-xs-8 col-sm-6 col-md-6 col-md-offset-3">
+                                    <div class="thumbnail">
+                                        <h3>Titre</h3><p>{{news.titre}}</p>
+                                        <h3>Image</h3><p>{{news.image}}</p>
+                                        <h3>Article</h3><p>{{news.article}}</p>
+                                        <h3>Auteur</h3><p>{{news.auteur}}</p>
+                                        <h3>Date</h3><p>{{news.date|date("m/d/Y")}}</p>
+                                        <h3>Catégorie</h3><p>{{news.categorie}}</p>
+                                        <h3>Etat de la publication</h3><p>{{news.etatpublication}}</p>
 
 
-</body>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-8 col-sm-6 col-md-6 col-md-offset-3 btn">
+                                <a class="modif" href="{{path("modif",{"id":news.id})}}">Modifier un article</a>
+                                <a class="supp" href="{{path("supp",{"id":news.id})}}">Supprimer un article</a>
+                            </div>
+                        </div>
+                                {%endif%}
+                                    {% endfor %}
+
+
+                       
+
+                        {% endblock %}

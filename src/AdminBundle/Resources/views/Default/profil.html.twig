@@ -1,39 +1,42 @@
-<body>
-    <nav>
-    <ul>
-        <li><a href="{{path("add")}}">Ajouter une article</a></li>
-        <li><a href="{{path("articles")}}">Voir articles</a></li>
-        <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
-        <li><a href="{{path("modifprofil")}}">Modifier mon profil</a></li>
-        <li><a href="{{path("admin")}}">Retour page admin</a></li>
-    </ul>
-</nav>
-            
-    <h2>Profil</h2>
-<!--Ci dessous je récupère le profil-->
+{% extends "AdminBundle:Default:admin.html.twig"%}
+
+{%block style %}
+    {#Ici je vais rajouter les css qui s'appliquent uniquement à la page profil   #}
+{%endblock%}
+
+{%block nav %}
+    <li><a href="{{path("add")}}">Ajouter une article</a></li>
+    <li><a href="{{path("articles")}}">Voir articles</a></li>
+    <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
+    <li><a href="{{path("modifprofil")}}">Modifier mon profil</a></li>
+    <li><a href="{{path("admin")}}">Retour page admin</a></li>
+    <li><a href="{{path("accueil")}}">Retour sur le site</a></li>
+    {%endblock%}
+
+{% block articles %}
+    <h1 class="titradmin">Mon profil</h1>
+    <!--Ci dessous je récupère le profil-->
     {% for profil in monProfil%}
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <p>{{profil.username}}</p>
-                        <p>{{profil.nom}}</p>
-                        <p>{{profil.prenom}}</p>
-                        <p>{{profil.pseudo}}</p>
-                        <p>{{profil.avatar}}</p>
-                        <p>{{profil.password}}</p>
-                        
-                        
+        <div class="container liste">
+            <div class="row">
+                <div class="col-xs-8 col-sm-6 col-md-6 col-md-offset-3">
+                    <div class="thumbnail">
+                        <h3>Photo de profil :</h3><p>{{profil.avatar}}</p>
+                        <h3>Email :</h3><p>{{profil.username}}</p>
+                        <h3>Nom :</h3><p>{{profil.nom}}</p>
+                        <h3>Prénom :</h3><p>{{profil.prenom}}</p>
+                        <h3>Pseudo :</h3><p>{{profil.pseudo}}</p>
+                        <h3>Mot de passe :</h3><p>{{profil.password}}</p>
+
+
                     </div>
                 </div>
             </div>
             <div>
-                <a href="{{path("modifprofil")}}">Modifier mon profil</a>
-                
-
+                <a class="modifprofil" href="{{path("modifprofil")}}">Modifier mon profil</a>
             </div>
         </div>
-            
+
     {% endfor %}
-    
-</body>
+
+{%endblock%}
