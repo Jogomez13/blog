@@ -6,7 +6,8 @@
         <img src="https://cdn1.iconfinder.com/data/icons/learning-and-entertainment-flat-icons/512/taol.png">
 
         <div>
-            <form>
+            {{form(form)}}
+            {#<form enctype="multipart/form-data">
                 <div><h1>Inscrition pour espace membre<h1></div>
                             
                             
@@ -20,7 +21,7 @@
                     </div>
 
                     <div>
-                        <input id="Upload photo"  class="btn-login" name="Upload photo" class="input-file" type="file">
+                        Choissisez un avatar : <input id="avatar"  class="btn-login" name="avatar" class="input-file" type="file">
                     </div>
                     
                     <div>
@@ -42,7 +43,7 @@
                 <h2>Vous avez déjà un compte? <a href="{{path("connexion")}}"></h2><input value="Connectez vous ici" class="btn-login"/>
             </div>
     </div>
-</form>
+</form>#}
             
 
         </div>

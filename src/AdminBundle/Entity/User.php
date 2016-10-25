@@ -1,9 +1,14 @@
 <?php
 
 namespace AdminBundle\Entity;
+//use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -11,7 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\UserRepository")
  */
-class User implements UserInterface, \Serializable {
+class User implements UserInterface, Serializable {
 
     /**
      * @var int
@@ -21,27 +26,26 @@ class User implements UserInterface, \Serializable {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="pseudo", type="string", length=100)
      */
     private $pseudo;
-  
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=100)
      */
     private $nom;
-    
-     
-     /**
-     * @var string
-     *
+
+    /**
+     * 
      * @ORM\Column(name="avatar", type="string", length=100)
+     * @Assert\File()
+     *
      */
     private $avatar;
 
@@ -194,7 +198,7 @@ class User implements UserInterface, \Serializable {
     public function getSalt() {
         return $this->salt;
     }
-    
+
     /**
      * Get pseudo
      *
@@ -203,7 +207,7 @@ class User implements UserInterface, \Serializable {
     function getPseudo() {
         return $this->pseudo;
     }
-    
+
     /**
      * Get avatar
      *
@@ -212,30 +216,29 @@ class User implements UserInterface, \Serializable {
     function getAvatar() {
         return $this->avatar;
     }
-    
-     /**
+
+    /**
      * Set pseudo
      *
-     * @param array $pseudo
+     * @param string $pseudo
      *
      * @return User
      */
     function setPseudo($pseudo) {
         $this->pseudo = $pseudo;
     }
-    
+
     /**
      * Set avatar
      *
-     * @param array $avatar
+     * @param UploadedFile $avatar
      *
      * @return User
      */
-    function setAvatar($avatar) {
-        $this->avatar = $avatar;
+    function setAvatar($uploadedFile) {
+        $this->avatar = $uploadedFile ;
     }
 
-   
     /**
      * Set roles
      *

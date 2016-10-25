@@ -10,6 +10,7 @@ use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -55,26 +56,38 @@ class AdminViewController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $user = new User(); //Instance de l'entité User
         //Si il détecte une requete ajax
-        if ($request->getMethod() == "POST") {
-            $user->setUsername($request->get('username'));
-            $user->setPassword($request->get('password'));
-            $user->setNom($request->get('nom'));
-            $user->setPrenom($request->get('prenom'));
-            $user->setPseudo($request->get('pseudo'));
-            $user->setAvatar("");
+
+        $user_form = $this->createForm(UserType::class, $user);
+        if ($request->getMethod() == 'POST') {
+            $user_form->handleRequest($request);
+            
+            if($request->get('mdp') !== ""){
+                $user->setPassword($request->get('mdp'));
+            }
+
+
+            $image = $user->getAvatar();
+            $nom = $image->getClientOriginalName();
+            $image->move("img/" . $user->getPseudo(), $nom);
+
+            $user->setAvatar("img/" . $user->getPseudo() . "/" .$nom);
             $user->setSalt("");
-            $user->setRoles(array("ROLE_USER"));
+            $user->setRoles(array('ROLE_USER'));
 
             $em->persist($user);
             $em->flush();
-
-
-            $response = new JsonResponse(); //Retour des données au format Json
-            $response->setData(array('reussite' => 'Inscription reussi !'));
-
-            return $response;
+            return $this->redirectToRoute('articles');
         }
-        return $this->render('AdminBundle:Default:inscription.html.twig');
+
+
+
+
+//            $response = new JsonResponse(); //Retour des données au format Json
+//            $response->setData(array('reussite' => 'Inscription reussi !'));
+//
+//            return $response;
+
+        return $this->render('AdminBundle:Default:inscription.html.twig', array('form' => $user_form->createView()));
     }
 
     /**
@@ -187,34 +200,45 @@ class AdminViewController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         $user = $this->getUser();
 
-        $profil = $this->createForm(UserType::class, $user);
-        if ($request->getMethod() == 'POST') {
-            $profil->handleRequest($request);
+        $avatar_courant = $user->getAvatar();
+        $pseudo_courant = $user->getPseudo();
 
-            if (!empty($request->get('mdp'))) {
-                $user->setPassword($request->get('mdp'));
+        $user->setAvatar(new UploadedFile($user->getAvatar(), $user->getAvatar()));
+
+        $profil = $this->createForm(UserType::class, $user); //Création du formulaire avec les données personnelles
+        $profil->handleRequest($request);
+        if ($profil->isSubmitted() && $profil->isValid()) {
+
+
+            if ($user->getPseudo() !== $pseudo_courant) {
+                rename("img/" . $pseudo_courant, "img/" . $user->getPseudo());
             }
 
-            $user->setAvatar($request->get('avatar'));
-            $user->setPseudo($request->get('pseudo'));
-            $user->setPrenom($request->get('prenom'));
-            $user->setNom($request->get('nom'));
-            $user->setUsername($request->get('username'));
+            if ($user->getAvatar() == null) {
+                $nom_img = explode("/", $avatar_courant);
+                $user->setAvatar("img/" . $user->getPseudo() . "/" . $nom_img[2]);
+            } else {
+
+                $image = $user->getAvatar();
+                $nom = $image->getClientOriginalName();
+                $image->move("img/" . $user->getPseudo(), $nom);
+                $user->setAvatar("img/" . $user->getPseudo() . "/" . $nom);
+            }
             $em->merge($user);
             $em->flush();
 
-            $response = new JsonResponse(); //Retour des données au format Json
-            $response->setData(array('reussite' => 'Votre profil a bien été modifié !'));
+//            $response = new JsonResponse(); //Retour des données au format Json
+//            $response->setData(array('reussite' => 'Votre profil a bien été modifié !'));//Retour en format Json
 
-            return $response;
+//            return $this->redirectToRoute("modifprofil");
         }
         return $this->render('AdminBundle:Default:modifprofil.html.twig', array('form' => $profil->createView()));
     }
 
     public function CreateFormAdmin($article) {
         $news = $this->createFormBuilder($article)
-                ->add('titre', null, array('attr' => array('placeholder' => 'Titre')))
-                ->add('image' , null , array('label'=>'nom de la rue')--)
+                ->add('titre')
+                ->add('image')
                 ->add('article')
                 ->add('categorie')
                 ->add('etatpublication')

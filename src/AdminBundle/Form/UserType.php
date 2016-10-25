@@ -3,6 +3,8 @@
 namespace AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +16,7 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('pseudo')->add('nom')->add('avatar')->add('prenom')->add('username')->add('Modifier', SubmitType::class);
+        $builder->add('pseudo')->add('nom')->add('prenom')->add('avatar' , FileType::class , array('required' => false))->add('username')->add('Envoyer', SubmitType::class);
     }
     
     /**

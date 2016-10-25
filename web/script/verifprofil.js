@@ -1,48 +1,31 @@
 $('document').ready(function () {
 
 
-    $('form').submit(function (event) {
-        event.preventDefault();
+    $('form').submit(function (event) {//A l'envoi du formulaire
 
-        //Si les champs mots de passes ne sont pas vides , donc si on veux changer de mot de passe
+
+        //Si au moins un des champs mots de passes n'est pas vide , donc si on veux changer de mot de passe
         if ($('#mdpactu').val() !== "" || $('#mdpnew').val() !== "" || $('#mdpconf').val() !== "") {
 
-            if ($('#mdpactu').val() !== $('#mdp').text() || $('#mdpnew').val() !== $('#mdpconf').val()) {
+            //Si les champs ne sont pas remplis correctement ou vides
+            if ($('#mdpactu').val() !== $('#mdp').text() || $('#mdpnew').val() !== $('#mdpconf').val() || $('#mdpactu').val() === "" || $('#mdpnew').val() === "" || $('#mdpconf').val() === "") {
+                event.preventDefault();
                 alert('Vérifiez vos informations');
-
-
             } else {
 
-                //On lance une requete ajax
+                //On lance une requete ajax pour envoyer les valeurs des champs
                 $.ajax({
                     url: 'modifprofil',
                     type: 'POST',
-                    data: 'mdp=' + $('#mdpnew').val() + '&username=' + $('#adminbundle_user_username').val()
-                            + '&pseudo=' + $('#adminbundle_user_pseudo').val() + '&nom=' + $('#adminbundle_user_nom').val() + '&prenom=' + $('#adminbundle_user_prenom').val()
-                            + '&avatar=' + $('#adminbundle_user_avatar').val(),
+                    data: 'mdp=' + $('#mdpnew').val(),
                     dataType: 'text',
                     success: function (data, textStatus, jqXHR) {
-                        var obj = $.parseJSON(data);
-                        alert(obj.reussite);
+                        var obj = $.parseJSON(data);//Retour des données en format Json
+                        alert(obj.reussite);//Affichage
 
                     }
                 });
             }
-        } else {
-            $.ajax({
-                url: 'modifprofil',
-                type: 'POST',
-                data: 'mdp=' + $('#mdpnew').val() + '&username=' + $('#adminbundle_user_username').val()
-                        + '&pseudo=' + $('#adminbundle_user_pseudo').val() + '&nom=' + $('#adminbundle_user_nom').val() + '&prenom=' + $('#adminbundle_user_prenom').val()
-                        + '&avatar=' + $('#adminbundle_user_avatar').val(),
-                dataType: 'text',
-                success: function (data, textStatus, jqXHR) {
-                    var obj = $.parseJSON(data);
-                    alert(obj.reussite);
-
-                }
-            });
-
         }
 
     });
