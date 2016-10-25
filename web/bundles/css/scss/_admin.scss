@@ -1,6 +1,7 @@
 .titradmin {
     text-align: center;
     margin-top : 50px;
+    margin-bottom: 50px;
 }
 
 
@@ -21,3 +22,9 @@
 p {
     font-size : 1.2em;
 }
+ @media(max-width:768px) {
+p {
+    font-size : 1em;
+}
+
+ }

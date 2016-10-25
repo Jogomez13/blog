@@ -15,21 +15,23 @@
    
    <!--nav-horizontal-->
            
-   <nav class="navbar-hor navbar-default" id="navadmin">
- <div class="container-fluid">
-
-   <div class="collapse navbar-collapse">
-     <ul class="nav navbar-nav navbar-right">
+   <nav class="navbar navbar-light bg-faded" id="navadmin">
+ 
+     <ul class="nav navbar-nav">
          {%block nav %}
-              <li><a href="{{path("add")}}">Ajouter un article</a></li>
-              <li><a href="{{path("articles")}}">Voir les articles</a></li>
-              <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
-              <li><a href="{{path("profil")}}">Voir profil</a></li>
-              <li><a href="{{path("accueil")}}">Retour sur le site</a></li>
+              <li class="nav-item active">
+                  <a class="nav-link" href="{{path("add")}}">Ajouter un article</a></li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{path("articles")}}">Voir les articles</a></li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{path("brouillons")}}">Voir les brouillons</a></li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{path("profil")}}">Voir profil</a></li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{path("accueil")}}">Retour sur le site</a></li>
               {%endblock%}
           </ul>
-   </div>
- </div>
+  
 </nav> 
         {% block articles %}
             

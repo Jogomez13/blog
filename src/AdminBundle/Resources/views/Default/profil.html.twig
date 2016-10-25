@@ -5,12 +5,18 @@
 {%endblock%}
 
 {%block nav %}
-    <li><a href="{{path("add")}}">Ajouter une article</a></li>
-    <li><a href="{{path("articles")}}">Voir articles</a></li>
-    <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
-    <li><a href="{{path("modifprofil")}}">Modifier mon profil</a></li>
-    <li><a href="{{path("admin")}}">Retour page admin</a></li>
-    <li><a href="{{path("accueil")}}">Retour sur le site</a></li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{path("add")}}">Ajouter une article</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{path("articles")}}">Voir articles</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{path("brouillons")}}">Voir les brouillons</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{path("modifprofil")}}">Modifier mon profil</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{path("admin")}}">Retour page admin</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{path("accueil")}}">Retour sur le site</a></li>
     {%endblock%}
 
 {% block articles %}
@@ -21,12 +27,12 @@
             <div class="row">
                 <div class="col-xs-8 col-sm-6 col-md-6 col-md-offset-3">
                     <div class="thumbnail">
-                        <h3>Photo de profil :</h3><img src ="../{{profil.avatar}}"/>
+                        <h3 id="titrephotoprofil">Photo de profil :</h3><img src ="../{{profil.avatar}}"/>
                         <h3>Email :</h3><p>{{profil.username}}</p>
                         <h3>Nom :</h3><p>{{profil.nom}}</p>
                         <h3>Prénom :</h3><p>{{profil.prenom}}</p>
                         <h3>Pseudo :</h3><p>{{profil.pseudo}}</p>
-                        <h3>Mot de passe :</h3><p>{{profil.password}}</p>
+                        
 
 
                     </div>

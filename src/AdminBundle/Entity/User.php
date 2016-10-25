@@ -43,7 +43,7 @@ class User implements UserInterface, Serializable {
 
     /**
      * 
-     * @ORM\Column(name="avatar", type="string", length=100)
+     * @ORM\Column(name="avatar", type="string", length=600)
      * @Assert\File()
      *
      */

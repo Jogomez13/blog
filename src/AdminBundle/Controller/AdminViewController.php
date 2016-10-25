@@ -10,9 +10,10 @@ use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Description of AdminViewController
@@ -61,9 +62,9 @@ class AdminViewController extends Controller {
         if ($request->getMethod() == 'POST') {
             $user_form->handleRequest($request);
             
-            if($request->get('mdp') !== ""){
-                $user->setPassword($request->get('mdp'));
-            }
+//            if($request->get('mdp') !== ""){
+//                $user->setPassword($request->get('mdp'));
+//            }
 
 
             $image = $user->getAvatar();
@@ -239,7 +240,7 @@ class AdminViewController extends Controller {
         $news = $this->createFormBuilder($article)
                 ->add('titre')
                 ->add('image')
-                ->add('article')
+                ->add('article', TextareaType::class)
                 ->add('categorie')
                 ->add('etatpublication')
                 ->add('Envoyer', SubmitType::class)
@@ -251,7 +252,7 @@ class AdminViewController extends Controller {
         $news = $this->createFormBuilder($article)
                 ->add('titre')
                 ->add('image')
-                ->add('article')
+                ->add('article', TextareaType::class)
                 ->add('categorie')
                 ->add('Envoyer', SubmitType::class)
                 ->getForm();

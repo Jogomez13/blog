@@ -4,11 +4,16 @@
         {%endblock%}
         
         {%block nav %}
-        <li><a href="{{path("add")}}">Ajouter une article</a></li>
-        <li><a href="{{path("articles")}}">Voir les articles</a></li>
-        <li><a href="{{path("profil")}}">Voir profil</a></li>
-        <li><a href="{{path("admin")}}">Retour page d'admin</a></li>
-        <li><a href="{{path("accueil")}}">Retour sur le site</a></li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{path("add")}}">Ajouter une article</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path("articles")}}">Voir les articles</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path("profil")}}">Voir profil</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path("admin")}}">Retour page d'admin</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path("accueil")}}">Retour sur le site</a></li>
     {%endblock%}
 
 {% block articles %}

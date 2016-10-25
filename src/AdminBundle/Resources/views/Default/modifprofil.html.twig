@@ -5,10 +5,19 @@
         {%endblock%}
 
             {%block nav %}
-            <li><a href="{{path("add")}}">Ajouter une article</a></li>
-            <li><a href="{{path("brouillons")}}">Voir les brouillons</a></li>
-            <li><a href="{{path("admin")}}">Retour page admin</a></li>
-            <li><a href="{{path("accueil")}}">Retour sur le site</a></li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{path("add")}}">Ajouter une article</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path("articles")}}">Voir les articles</a></li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path("profil")}}">Voir mon profil</a></li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{path("brouillons")}}">Voir les brouillons</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path("admin")}}">Retour page admin</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path("accueil")}}">Retour sur le site</a></li>
             {%endblock%}
             
              {% block articles %}
@@ -16,13 +25,21 @@
     <h1 class="titradmin">Modifiez votre profil</h1>
     
     <div id="mdp" style="display: none">{{app.user.password}}</div>
-
-    {{form(form)}}
     
-    <input id="mdpactu" type="password" placeholder="Mot de passe actuel">
-    <input id="mdpnew" type="password" placeholder="Nouveau mot de passe">
-    <input id="mdpconf" type="password" placeholder="Confirmez votre mot de passe">
-
+   {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+    {{form(form)}}
+ 
+    <div id="modifmdp">
+        
+    <h2>Modifiez votre mot de passe</h2>    
+    <p>Entrez votre mot de passe actuel</p>
+    <input class="motdepasse" id="mdpactu" type="password" placeholder="Mot de passe actuel">
+    <p>Nouveau de passe</p>
+    <input class="motdepasse" id="mdpnew" type="password" placeholder="Nouveau mot de passe">
+    <p>Confirmez votre mot de passe</p>
+    <input class="motdepasse" id="mdpconf" type="password" placeholder="Confirmez votre mot de passe">
+    
+    </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../script/verifprofil.js"></script>

@@ -1,4 +1,4 @@
-@media(max-width:992px) {
+@media(max-width:768px) {
     .thumbnail {
     margin-left : 100px;
 }
@@ -19,8 +19,16 @@
     margin-right: 150px;
    }
    
-   @media(max-width:992px) {
+   @media(max-width:768px) {
+   .modif {
+    font-size : 1em;
+    margin-right: 0px;
+   }
+   }
+   
+   @media(max-width:768px) {
        .modif {
+           margin-left : 50px;
            margin-right: 20px;
        }
    }
@@ -30,5 +38,10 @@
     font-size : 1.2em;
 }
 
+@media(max-width:768px) {
+    .supp {
+        font-size : 1em;
+}
+   }
 
 
