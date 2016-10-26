@@ -4,17 +4,18 @@
 	border: 0px;
 	font-size: 20px;
 	color: white;
-	background-color: #B6D9FF;
+	background-color: #003772;
         margin-bottom: 20px;
-        width: 50%;
+        width: 65%;
 }
 #adminbundle_user_avatar{
-    margin-left: 25%;
+    margin-left: 38%;
+    width: 50%
 }
 /*CONTAINER GENERAL DE LA PAGE*/
 .container{
     font-family: 'Lobster', cursive;  
-	width: 480px;
+	width: 600px;
 	text-align: center;
 	margin: 0 auto;
 	margin-top: 70px;
@@ -31,7 +32,7 @@
 label{
     font-size: 40px;
     width: 25%;
-    color:ghostwhite;
+    color: #0262cc;
 }
 label[for="adminbundle_user_avatar"]{
     display: none;
@@ -40,11 +41,10 @@ label[for="adminbundle_user_avatar"]{
         
         margin-top: 20px;
         font-family: 'Lobster', cursive;  
-	width: 500px;
+	width: 80%;
 	text-align: center;
 	margin: 0 auto;
 	margin-top: 70px;
-        background-color: #B6D9FF;
 }
 /* zone de texte */
 #adminbundle_user_password,#adminbundle_user_username,#adminbundle_user_prenom,#adminbundle_user_nom,#adminbundle_user_pseudo{
@@ -52,7 +52,7 @@ label[for="adminbundle_user_avatar"]{
     font-family: 'Lobster', cursive;  
     margin-bottom: 5px;
     border-radius: 30px;
-    width: 25%;
+    width: 50%;
     text-align: center;
 }
 

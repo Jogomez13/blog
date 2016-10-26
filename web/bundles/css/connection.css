@@ -1,6 +1,6 @@
-h1{
+#h1connection{
     font-family: 'Lobster', cursive;
-    font-size: 60px;
+    font-size: 50px;
 }
 .container{
     font-family: 'Lobster', cursive;  
@@ -8,10 +8,10 @@ h1{
 	text-align: center;
 	margin: 0 auto;
 	margin-top: 70px;
-	background-color: #B22222;
+	background-color: #B6D9FF;
 }
 .textinput{
-	
+        text-align: center;
 	font-size: 38px;
         font-family: 'Lobster', cursive;  
 	margin-bottom: 30px;
@@ -33,14 +33,14 @@ h1{
 	border: 0px;
 	font-size: 20px;
 	color: white;
-	background-color: #32BF9E;
+	background-color: #003772;
         margin-bottom: 20px;
         width: 50%;
 }
 label{
     font-size: 30px;
     width: 20%;
-    color:ghostwhite;
+    background-color: #B6D9FF;
 }
 #boutonretour{
     margin-left: 12px;

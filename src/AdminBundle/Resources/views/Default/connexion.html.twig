@@ -11,7 +11,7 @@
             {% endif %}
 
             <form action="{{ path('login_check') }}" method="post"  class="form form--login">
-                <h1>Se connecter<h1>
+                <h1 id="h1connection">Se connecter<h1>
 
                             <div>
                                 <label for="username">Email :</label>
@@ -27,7 +27,7 @@
             </form>
                 
         <div>
-            <h1>Nouvel utilisateur? <a href="{{path("inscription")}}"></h1><input value="Créer un nouveau compte" class="btn-login" />     
+            <h1 id="h1connection">Nouvel utilisateur ? <a href="{{path("inscription")}}"></h1><input value="Créer un nouveau compte" class="btn-login" />     
         </div>
         
     </div>
