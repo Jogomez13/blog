@@ -10,19 +10,17 @@
                     <div>
                         <div>
                             <div class="container-fluid">
-                                <div class="col-sm-8 col-sm-offset-2">
-                                <div class="thumbnail">
+                                <div class="thumbnail col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                                     <p class="newtitre">{{news.titre}}</p>
                                     <p class="newimage">{{news.image}}</p>
                                     <p class="newarticle">{{news.article}}</p>
                                 </div>
-                                </div>
                             </div>
-                            <div class="">
-                                    <p class="newauteur">{{news.auteur}}</p>
-                                    <p class="newdate">{{news.date|date("m/d/Y")}}</p>
-                                    <p class="newcategorie">{{news.categorie}}</p>
-                                    <p class="etatpublication">{{news.etatpublication}}</p>
+                            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 main">
+                                    <p class="news">{{news.auteur}}</p>
+                                    <p class="news">{{news.date|date("m/d/Y")}}</p>
+                                    <p class="news">{{news.categorie}}</p>
+                                    <p class="news">{{news.etatpublication}}</p>
                             </div>
                         </div>
                     </div>

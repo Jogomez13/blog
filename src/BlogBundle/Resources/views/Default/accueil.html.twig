@@ -3,7 +3,8 @@
     <head>  
         <meta charset="utf-8">
         <link href="{{ asset('../web/bundles/css/style.css') }}" rel="stylesheet" />
-        <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />      
+        <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />
+        
     </head>
     <title>Blog</title>
 
@@ -21,7 +22,7 @@
           <li class="listenav"><a href="{{ path('tablette') }}">Tablette</a></li>
           <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle"type="button"
-              data-toggle="dropdown" class="dropdown">Espace membre
+              data-toggle="dropdown" class="dropdown espace">Espace membre
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                       
@@ -38,19 +39,21 @@
                   </ul>
          </div>
         </ul>
-
+    
+         
+    
    <!--Block sections ordinateur/tablette/portable-->
 
     {%block body %}
+        
 <body>
+    <h1 id='titreaccueil'>Bienvenue</h1>
 </body>
     {%endblock %}  
 
-
-
-    <footer> 
+    <footer class="col-xs-12"> 
         <p class="copyright">Développé & propulsé par : <a href="http://www.driad.fr/"> Charles-André PALADE</a><a href="http://jonathan-gomez.fr/">, Jonathan GOMEZ</a><a href="http://thibaut-figueres.fr/">, Thibaut FIGUERES</a><a href=""> & Gaston SABOY</a></p>     
-</footer>  
+    </footer>  
 <script type="text/javascript" src="{{asset('../vendor/twbs/bootstrap/js/tests/vendor/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('../vendor/twbs/bootstrap/dist/js/bootstrap.js')}}"></script>
 </html>

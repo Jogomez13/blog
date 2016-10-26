@@ -57,7 +57,7 @@ header {
   font-family: 'Lobster', cursive;
   font-size: 25px; }
 
-/*liens des éléments de la nav*/
+/* liens des éléments de la nav */
 .listenav a {
   color: white; }
 
@@ -65,9 +65,24 @@ header {
   color: white;
   text-decoration: none; }
 
+/* skin du bouton-menu déroulant */
 .dropdown {
-  font-size: 40px; }
+  padding-top: 14px;
+  font-family: 'Lobster', cursive;
+  font-size: 20px; }
 
+/* page accueil blog */
+#titreaccueil {
+  text-align: center;
+  font-size: 100px;
+  margin-bottom: 150px;
+  padding-top: 50px;
+  /*font-family:'Lobster', cursive;*/ }
+
+/* responsive xs page accueil blog */
+@media (max-width: 768px) {
+  #titreaccueil {
+    font-size: 70px; } }
 /* footer */
 .copyright {
   text-align: center; }
@@ -85,6 +100,9 @@ p {
 .newtitre {
   text-align: center;
   font-size: 35px; }
+
+.main {
+  text-align: right; }
 
 h1 {
   font-size: 30px; }
@@ -123,7 +141,8 @@ label {
 
 .titradmin {
   text-align: center;
-  margin-top: 50px; }
+  margin-top: 50px;
+  margin-bottom: 50px; }
 
 #navadmin {
   background-color: black; }
@@ -135,7 +154,10 @@ label {
 p {
   font-size: 1.2em; }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
+  p {
+    font-size: 1em; } }
+@media (max-width: 768px) {
   .thumbnail {
     margin-left: 100px; } }
 .liste {
@@ -149,20 +171,50 @@ p {
   font-size: 1.2em;
   margin-right: 150px; }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .modif {
+    font-size: 1em;
+    margin-right: 0px; } }
+@media (max-width: 768px) {
+  .modif {
+    margin-left: 50px;
     margin-right: 20px; } }
 .supp {
   color: black;
   font-size: 1.2em; }
 
+@media (max-width: 768px) {
+  .supp {
+    font-size: 1em; } }
 .modifprofil {
   color: black;
   font-size: 1.2em;
   padding-bottom: 50px; }
 
+#titrephotoprofil {
+  margin-bottom: 100px; }
+
 label {
   font-size: 18px;
   color: black; }
+
+#adminbundle_user {
+  width: 30%; }
+
+form {
+  display: flex;
+  justify-content: center; }
+
+#modifmdp {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center; }
+
+.motdepasse {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+label {
+  margin-right: 10px; }
 
 /*# sourceMappingURL=style.css.map */

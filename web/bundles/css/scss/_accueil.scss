@@ -74,7 +74,7 @@ font-family: 'Lobster', cursive;
 font-size: 25px;
 }
 
-/*liens des éléments de la nav*/
+/* liens des éléments de la nav */
 
 .listenav a{
 color:white;
@@ -85,9 +85,30 @@ color:white;
 text-decoration: none;
 }
 
+/* skin du bouton-menu déroulant */
 
 .dropdown{
- font-size:40px;
+  padding-top:14px;
+  font-family:'Lobster', cursive; 
+  font-size:20px;
+}
+
+/* page accueil blog */
+
+#titreaccueil{
+    text-align:center;
+    font-size:100px;
+    margin-bottom:150px;
+    padding-top:50px;
+    /*font-family:'Lobster', cursive;*/
+}
+
+/* responsive xs page accueil blog */
+
+@media(max-width:768px){
+     #titreaccueil{
+           font-size:70px;    
+        }           
 }
 
 /* footer */
