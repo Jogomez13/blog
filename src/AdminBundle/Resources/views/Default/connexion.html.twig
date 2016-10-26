@@ -1,8 +1,9 @@
-<link href="{{ asset('../web/bundles/css/style.css') }}" rel="stylesheet" />
+<link href="{{ asset('../web/bundles/css/connection.css') }}" rel="stylesheet" />
+<link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />
 <body>
     <div class="container">
         <img src="https://cdn1.iconfinder.com/data/icons/learning-and-entertainment-flat-icons/512/taol.png">
-
+            
         <div>
 
             {% if error %}
@@ -10,23 +11,23 @@
             {% endif %}
 
             <form action="{{ path('login_check') }}" method="post"  class="form form--login">
-                <div><h1>Se connecter<h1></div>
+                <h1>Se connecter<h1>
 
                             <div>
                                 <label for="username">Email :</label>
-                                <input type="text" class="textconnection col-xs-offset-1" id="username" name="_username" value="" />
+                                <input type="text" class="textinput" id="username" name="_username" value="" />
                             </div>
 
                             <div>
                                 <label for="password">Mot de passe :</label>
-                                <input type="password" class="textconnection" id="password" name="_password" />
+                                <input type="password" class="textinput" id="password" name="_password" />
                             </div>
 
                 <input type="submit" value="Connexion" class="btn-login" />
             </form>
                 
         <div>
-            <h2>Nouvel utilisateur? <a href="{{path("inscription")}}"></h2><input value="Créer un nouveau compte" class="btn-login" />     
+            <h1>Nouvel utilisateur? <a href="{{path("inscription")}}"></h1><input value="Créer un nouveau compte" class="btn-login" />     
         </div>
         
     </div>

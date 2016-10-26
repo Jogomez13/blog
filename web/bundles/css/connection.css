@@ -1,0 +1,64 @@
+h1{
+    font-family: 'Lobster', cursive;
+    font-size: 60px;
+}
+.container{
+    font-family: 'Lobster', cursive;  
+	width: 480px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 70px;
+	background-color: #B22222;
+}
+.textinput{
+	
+	font-size: 38px;
+        font-family: 'Lobster', cursive;  
+	margin-bottom: 30px;
+        border-radius: 30px;
+        width: 30%;
+
+}
+.container img{
+	width: 120px;
+	height: 120px;
+	margin-top: -70px;
+	margin-bottom: 30px;
+
+}
+.btn-login{
+        text-align: center;
+	padding: 15px 30px;
+	border-radius: 30px;
+	border: 0px;
+	font-size: 20px;
+	color: white;
+	background-color: #32BF9E;
+        margin-bottom: 20px;
+        width: 50%;
+}
+label{
+    font-size: 30px;
+    width: 20%;
+    color:ghostwhite;
+}
+#boutonretour{
+    margin-left: 12px;
+    width: 20%;
+}
+/* RESPONSIVE */
+@media(max-width:992px){
+    body{
+        margin: 0px;
+    }
+    .container{
+        width: 100%;
+    }
+    .container img{
+        display: none;
+    }
+    .container{
+        margin-top: 0px;
+        width: 100%;
+    }
+}

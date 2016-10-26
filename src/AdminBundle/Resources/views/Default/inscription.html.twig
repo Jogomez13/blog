@@ -1,52 +1,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../script/inscription.js"></script>
-<link href="{{ asset('../web/bundles/css/style.css') }}" rel="stylesheet" />
+<link href="{{ asset('../web/bundles/css/inscription.css') }}" rel="stylesheet" />
+        <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />
 <body>
     <div class="container">
         <img src="https://cdn1.iconfinder.com/data/icons/learning-and-entertainment-flat-icons/512/taol.png">
-
         <div>
             {{form(form)}}
-            {#<form enctype="multipart/form-data">
-                <div><h1>Inscrition pour espace membre<h1></div>
-                            
-                            
-                    <div>
-
-                        <input type="text" id="nom" placeholder="Nom">
-
-                        <input type="text" id="prenom" placeholder="Prenom">
-                        
-                        <br><input type="text" id="pseudo" placeholder="Pseudo">
-                    </div>
-
-                    <div>
-                        Choissisez un avatar : <input id="avatar"  class="btn-login" name="avatar" class="input-file" type="file">
-                    </div>
-                    
-                    <div>
-                        <input type="password" class="textconnection" id="password" placeholder="Votre mot de passe">
-                    </div>
-                    
-                    <div>
-
-                        <input type="password" class="textconnection" id="conf_password" placeholder="Confirmez le mot de passe">
-                    </div>
-
-                    <div>
-                        <input type="text" class="textconnection" id="email" placeholder="Votre e-mail">
-                    </div>
-
-                </div>
-                <button id="valider"class="btn-login" type="button">Valider</button>
-                <div>
-                <h2>Vous avez déjà un compte? <a href="{{path("connexion")}}"></h2><input value="Connectez vous ici" class="btn-login"/>
-            </div>
-    </div>
-</form>#}
-            
-
         </div>
-
     </div>
 </body>
