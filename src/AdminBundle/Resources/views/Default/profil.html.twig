@@ -23,26 +23,26 @@
     <h1 class="titradmin">Mon profil</h1>
     <!--Ci dessous je récupère le profil-->
     {% for profil in monProfil%}
-        <div class="container liste">
-            <div class="row">
-                <div class="col-xs-8 col-sm-6 col-md-6 col-md-offset-3">
-                    <div class="thumbnail">
-                        <h3 id="titrephotoprofil">Photo de profil :</h3><img src ="../{{profil.avatar}}"/>
-                        <h3>Email :</h3><p>{{profil.username}}</p>
-                        <h3>Nom :</h3><p>{{profil.nom}}</p>
-                        <h3>Prénom :</h3><p>{{profil.prenom}}</p>
-                        <h3>Pseudo :</h3><p>{{profil.pseudo}}</p>
-                        
+        <div class="container-fluid liste">
 
 
-                    </div>
-                </div>
-            </div>
-            <div>
-                <a class="modifprofil" href="{{path("modifprofil")}}">Modifier mon profil</a>
+            <div class="thumbnail profil col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                <h3 id="titrephotoprofil">Photo de profil :</h3><img id ="photoprofil" src ="../{{profil.avatar}}"/>
+                <h3>Email :</h3><p>{{profil.username}}</p>
+                <h3>Nom :</h3><p>{{profil.nom}}</p>
+                <h3>Prénom :</h3><p>{{profil.prenom}}</p>
+                <h3>Pseudo :</h3><p>{{profil.pseudo}}</p>
+
+
+
             </div>
         </div>
+    </div>
+    <div>
+        <a class="col-xs-12 modifprofil" href="{{path("modifprofil")}}">Modifier mon profil</a>
+    </div>
+</div>
 
-    {% endfor %}
+{% endfor %}
 
 {%endblock%}

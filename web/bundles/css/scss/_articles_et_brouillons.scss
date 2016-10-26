@@ -1,3 +1,4 @@
+/* STYLE POUR  LES PAGES ARTICLES ET BROUILLONS */
 @media(max-width:768px) {
     .thumbnail {
     margin-left : 100px;
@@ -6,8 +7,16 @@
 
 .liste {
     background-color: white;
+    
 }
 
+/* word-wrap permet de couper les  longs mots et de les faire passer à la ligne */
+ 
+p {
+    word-wrap: break-word;
+}
+
+/* BOUTON MODIFIER ET SUPPRIMER */
 .btn {
     background-color: white;
     
@@ -28,7 +37,7 @@
    
    @media(max-width:768px) {
        .modif {
-           margin-left : 50px;
+           
            margin-right: 20px;
        }
    }
@@ -43,5 +52,7 @@
         font-size : 1em;
 }
    }
+   
+  
 
-
+ 

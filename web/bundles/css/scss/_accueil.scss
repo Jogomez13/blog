@@ -93,6 +93,27 @@ text-decoration: none;
   font-size:20px;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: black !important;
+    border-color: black !important;
+    font-family: 'Lobster', cursive !important;
+    font-size: 25px !important;
+    margin-top : -10px;
+}
+
+/* skin du bouton-menu déroulant responsive */
+@media(max-width:992px){
+.open > .dropdown-menu {
+    margin-left : 40%;
+}
+}
+
+@media(max-width:768px){
+.open > .dropdown-menu {
+    margin-left : 30%;
+}
+}
 /* page accueil blog */
 
 #titreaccueil{

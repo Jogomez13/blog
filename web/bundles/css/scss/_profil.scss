@@ -1,10 +1,24 @@
+/* FIN STYLE POUR LA PAGE PROFIL */
+.profil {
+    text-align: center;
+}
+
 .modifprofil {
+    text-align: center;
     color : black;
     font-size : 1.2em;
-    padding-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 50px;
    }
    
    #titrephotoprofil {
        margin-bottom: 100px;
+   }
+   
+   #photoprofil {
+       width : 200px;
+       height : 200px;
+       margin-top: -50px;
+       margin-bottom: 50px;
    }
    
