@@ -21,7 +21,6 @@ class NewsType extends AbstractType {
                 ->add('image')
                 ->add('article', TextareaType::class)
                 ->add('categorie')
-                
                 ->add('etatpublication')
                 ->add('Envoyer', SubmitType::class)
 

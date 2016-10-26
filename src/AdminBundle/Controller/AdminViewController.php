@@ -254,6 +254,7 @@ class AdminViewController extends Controller {
                 ->add('image')
                 ->add('article', TextareaType::class)
                 ->add('categorie')
+                ->add('etatpublication')
                 ->add('Envoyer', SubmitType::class)
                 ->getForm();
 
