@@ -1,0 +1,37 @@
+/*CONTENAIRE DE LA PAGE CONTACT*/
+
+.container{
+    display: block;
+    max-width: 1200px;
+    height: auto;
+    margin-top: 100px;
+    background-color: blue;
+}
+
+
+
+/*TITRE DU TEXTE A REMPLIR*/
+.labelcontact{
+    background-color: red;
+    color: #014ea5;
+}
+
+
+/*ZONE DE TEXTE A REMPLIR*/ 
+.inputcontact{
+        background-color: violet;
+        font-size: 38px;
+        text-align: center;
+        border-radius: 30px;
+}
+
+/*BOUTON ENVOYER DE LA PAGE CONTACT*/ 
+.boutoncontact{
+        background-color: yellow;
+        font-size: 38px;
+        text-align: center;
+        border-radius: 30px;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){}
