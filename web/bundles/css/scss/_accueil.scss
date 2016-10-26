@@ -1,3 +1,7 @@
+body{
+    background-color:#B6D9FF!important;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 /* STYLE POUR LE HEADER */
 header{
@@ -111,7 +115,7 @@ text-decoration: none;
 
 @media(max-width:768px){
 .open > .dropdown-menu {
-    margin-left : 30%;
+    margin-left : 40%;
 }
 }
 /* page accueil blog */
@@ -121,7 +125,7 @@ text-decoration: none;
     font-size:100px;
     margin-bottom:150px;
     padding-top:50px;
-    /*font-family:'Lobster', cursive;*/
+    font-family:'Lobster', cursive;
 }
 
 /* responsive xs page accueil blog */
@@ -136,4 +140,5 @@ text-decoration: none;
 
 .copyright{
  text-align:center;
+ font-family:none;
 }
