@@ -1,6 +1,7 @@
 /* STYLE POUR  LES PAGES ARTICLES ET BROUILLONS */
 h3 {
     text-align: center;
+    font-family: 'Lobster', cursive;
 }
 @media(max-width:768px) {
     .thumbnail {
@@ -17,6 +18,7 @@ h3 {
  
 p {
     word-wrap: break-word;
+    text-align: center;
 }
 
 /* BOUTON MODIFIER ET SUPPRIMER */

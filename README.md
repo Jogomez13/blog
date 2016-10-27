@@ -5,37 +5,45 @@ Blog
     
     ## Front-end :
         
-        ### * HTML (version 5)
-        ### * CSS (version 3)
-        ### * Bootstrap (version 3.3)
-        ### * SASS (version 3.5)
+        ###  HTML (version 5)
+        ###  CSS (version 3)
+        ###  Bootstrap (version 3.3)
+        ###  SASS (version 3.5)
         
     ## Back-end :
       
-        ### * PHP (version 5.5.9)
-        ### * Framework "Symphony" (version 3.1)
-        ### * PHPmyadmin (version 4.6.4)
+        ###  PHP (version 5.5.9)
+        ###  Framework "Symphony" (version 3.1)
+        ###  PHPmyadmin (version 4.6.4)
    
     ## IDE :
      
-        ### * Netbeans(version 8.1)
+        ###  Netbeans(version 8.1)
 
 # **Procédures d installation:**
 
+     ##Créer un dossier vide nommé blog
+    
     ## Récupérez le dépôt sur Github (console)
+      
+       Ouvrir le projet dans Netbeans
 
-    ## Installez les dépendances (boostrap en l'occurence) via composer:
+    ## Installez les dépendances via composer:
         ### 1. clique-droit project -> composer -> install (dev)
-        ### Pensez aux droits d'accés d'écriture du dossier vendor quand vous installez composer sous Linux
 
-    ## Installation des entités:
+    ## Installation de la base de données:
 
     ### * -Les points abordés:
-        ### 1. Créez la base de données sur phpmyadmin
-        ### 2. Liez votre base de données dans parameters.yml
-        ### 3. Installez doctrine pour générer les entités (php bin/console generate:doctrine:entity)
-        ### 4. Créez et pushez les tables sur phpmyadmin avec la console (php app/console doctrine:schema:update --force)
-         
+        ### 1. Créez la base de données sur phpmyadmin (nom = blog)
+        ### 2. Créez le fichier parameters.yml dans app/config si il n'existe pas
+        ### 3. Liez votre base de données dans parameters.yml
+        ### 4. Synchroniser la BDD avec le projet blog dans le terminal : 
+               php bin/console doctrine:schema:update --force 
+        ### 5. Dans la table catégorie, insérez 3 noms dans l'ordre suivant -> "ordinateur", "tablette", "telephone"
+        ### 6. Dans la table etatpublication, insérez 2 noms dans l'ordre suivant -> "publie", "brouillon"
+        ### 7. Pensez aux droits d'administration: sudo chmod -R 777 *
+        ### 8. Rajoutez "accueil" dans l'URL
+
 # **Liens outils collaboratifs:**  
 
         ### * Framapad [GitHub](https://mypads.framapad.org/mypads/?/mypads/group/projet-blog-charles-jonathan-thibaut-x6may7nt/pad/view/taches-a-accomplir-69mby7fc)

@@ -8,7 +8,7 @@ h1{
 	text-align: center;
 	margin: 0 auto;
 	margin-top: 70px;
-	background-color: #B22222;
+	background-color: #B6D9FF;
 }
 .textinput{
 	
@@ -33,14 +33,14 @@ h1{
 	border: 0px;
 	font-size: 20px;
 	color: white;
-	background-color: #32BF9E;
+	background-color: #014ea5;
         margin-bottom: 20px;
         width: 50%;
 }
 label{
     font-size: 30px;
     width: 20%;
-    color:ghostwhite;
+    color:#014ea5;
 }
 #boutonretour{
     margin-left: 12px;

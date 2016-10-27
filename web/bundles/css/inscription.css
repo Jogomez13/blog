@@ -4,12 +4,12 @@
 	border: 0px;
 	font-size: 20px;
 	color: white;
-	background-color: #B6D9FF;
+	background-color: #014ea5;
         margin-bottom: 20px;
-        width: 50%;
+        width: 40%;
 }
 #adminbundle_user_avatar{
-    margin-left: 25%;
+    margin-left: 42%;
 }
 /*CONTAINER GENERAL DE LA PAGE*/
 .container{
@@ -52,7 +52,7 @@ label[for="adminbundle_user_avatar"]{
     font-family: 'Lobster', cursive;  
     margin-bottom: 5px;
     border-radius: 30px;
-    width: 25%;
+    width: 60%;
     text-align: center;
 }
 
@@ -60,6 +60,10 @@ label[for="adminbundle_user_avatar"]{
 @media(max-width:992px){
     body{
         margin: 0px;
+    }
+    #adminbundle_user_avatar{
+    margin-left: 28%;
+    width: 50%;
     }
     #container{
         width: 100%;

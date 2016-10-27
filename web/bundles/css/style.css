@@ -31,6 +31,10 @@ header {
 @media (max-width: 992px) {
   #titreprincipal {
     font-size: 50px; } }
+@media (max-width: 768px) {
+  #titreprincipal {
+    padding-top: 40px;
+    font-size: 40px; } }
 /* STYLE POUR LA BARRE DE NAV */
 /* container barre de nav */
 .containernav {
@@ -159,7 +163,8 @@ p {
     font-size: 1em; } }
 /* STYLE POUR  LES PAGES ARTICLES ET BROUILLONS */
 h3 {
-  text-align: center; }
+  text-align: center;
+  font-family: 'Lobster', cursive; }
 
 @media (max-width: 768px) {
   .thumbnail {
@@ -169,7 +174,8 @@ h3 {
 
 /* word-wrap permet de couper les  longs mots et de les faire passer à la ligne */
 p {
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  text-align: center; }
 
 /* BOUTON MODIFIER ET SUPPRIMER */
 .btn {
