@@ -7,7 +7,7 @@
         <div>
 
             {% if error %}
-                <div class="alert alert-danger">{{ error.message }}</div>
+                <div class="alert alert-danger">Mauvais identifiants !</div>
             {% endif %}
 
             <form action="{{ path('login_check') }}" method="post"  class="form form--login">

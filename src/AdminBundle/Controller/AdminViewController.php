@@ -37,7 +37,7 @@ class AdminViewController extends Controller {
     public function getConnexion() {  //Fonction pour connecter l'utilisateur
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
 
-            return $this->redirectToRoute("bool"); //Retour sur la page principal//             
+            return $this->redirectToRoute("accueil"); //Retour sur la page principal//             
         }
 
         $authenticationUtils = $this->get('security.authentication_utils');

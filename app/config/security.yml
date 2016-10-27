@@ -18,12 +18,12 @@ security:
       
      
       form_login:
-        default_target_path: /accueil
+        default_target_path: /
         login_path: /connexion
         check_path: /login_check
       logout:
         path:       /logout
-        target:     /accueil
+        target:     /
 
   access_control:
 
