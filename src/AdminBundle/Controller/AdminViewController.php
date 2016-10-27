@@ -2,6 +2,7 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Entity\Etatpublication;
 use AdminBundle\Entity\News;
 use AdminBundle\Entity\User;
 use AdminBundle\Form\NewsType;
@@ -77,7 +78,7 @@ class AdminViewController extends Controller {
 
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('articles');
+            return $this->redirectToRoute('accueil');
         }
 
 
@@ -109,6 +110,8 @@ class AdminViewController extends Controller {
 
         //Je crée un nouvel objet
         $article = new News();
+        //ci-dessous je déclare que les articles sont forcément en brouillon de base grâce à l'id 2
+        $article->setEtatpublication($this->getDoctrine()->getRepository(Etatpublication::class)->find(2));
         $user = $this->getUser()->getRoles();
         //Je crée le formulaire 
 
@@ -142,7 +145,11 @@ class AdminViewController extends Controller {
     public function modifArticle($id, Request $request) {
         $em = $this->getDoctrine()->getEntityManager();
         $article = $em->find('AdminBundle:News', $id);
-        $news = $this->createForm(NewsType::class, $article);
+         if ($this->getUser()->getRoles() === array('ROLE_ADMIN')) {
+            $news = $this->CreateFormAdmin($article);
+        } else {
+            $news = $this->CreateFormUser($article);
+        }
         if ($request->getMethod() == 'POST') {
             $news->handleRequest($request);
             $em->merge($article);
@@ -254,7 +261,6 @@ class AdminViewController extends Controller {
                 ->add('image')
                 ->add('article', TextareaType::class)
                 ->add('categorie')
-                ->add('etatpublication')
                 ->add('Envoyer', SubmitType::class)
                 ->getForm();
 

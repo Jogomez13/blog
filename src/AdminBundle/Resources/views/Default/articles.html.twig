@@ -7,7 +7,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{path("add")}}">Ajouter un article</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path("brouillons")}}">Voir les brouillons</a></li>
+                    <a class="nav-link" href="{{path("brouillons")}}">Voir {%if app.user.roles[0] == "ROLE_ADMIN"%}les {%else%}mes {%endif%}brouillons</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{path("profil")}}">Voir profil</a></li>
                 <li class="nav-item">
@@ -38,11 +38,14 @@
                                     </div>
                                 </div>
                            
+                               {%if app.user.roles[0] == "ROLE_ADMIN"%}
+                                   
                             <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3 btn">
                                 <a class="modif" href="{{path("modif",{"id":news.id})}}">Modifier un article</a>
                                 <a class="supp" href="{{path("supp",{"id":news.id})}}">Supprimer un article</a>
                             </div>
                         </div>
+                        {%endif%}
                                 {%endif%}
                                     {% endfor %}
 

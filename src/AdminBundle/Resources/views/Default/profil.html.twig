@@ -10,7 +10,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{path("articles")}}">Voir articles</a></li>
     <li class="nav-item">
-        <a class="nav-link" href="{{path("brouillons")}}">Voir les brouillons</a></li>
+                            <a class="nav-link" href="{{path("brouillons")}}">Voir {%if app.user.roles[0] == "ROLE_ADMIN"%}les {%else%}mes {%endif%}brouillons</a></li>
     <li class="nav-item">
         <a class="nav-link" href="{{path("modifprofil")}}">Modifier mon profil</a></li>
     <li class="nav-item">

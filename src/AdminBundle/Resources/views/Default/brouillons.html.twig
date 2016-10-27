@@ -18,7 +18,7 @@
 
 {% block articles %}
 
-    <h1 class="titradmin">Mes brouillons</h1>
+    <h1 class="titradmin">{%if app.user.roles[0] == "ROLE_ADMIN"%}Les {%else%}Mes {%endif%} brouillons</h1>
     <!--Ci dessous je récupère les articles-->
     {% for brouillon in listBrouillons%}
         {%if brouillon.etatpublication == "brouillon"%}
