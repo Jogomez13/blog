@@ -1,63 +1,57 @@
 /* STYLE POUR  LES PAGES ARTICLES ET BROUILLONS */
-h3 {
+.container-fluid liste{
+    width: 100%;
+    background-color:#014ea5;
+}
+.titreadmin{
+    font-size: 48px;
     text-align: center;
     font-family: 'Lobster', cursive;
 }
-@media(max-width:768px) {
-    .thumbnail {
-    margin-left : 100px;
+#textearticle{
+    margin-top: 40px;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: justify;
 }
+#divarticle{
+    margin-top: 20px;
+    text-align: left;
 }
+.imageadmin{
+    
+        max-height: 10%;
+        max-width: 80%;
+    }
+    
+    .elementarticle{
+        text-align: center;
+    }
 
-.liste {
-    background-color: white;
+    .autreelementarticle{
+        text-align: center;
+    }
+
+p{
+        text-align: center;
+}   
+    
+.thumbnail{
+    margin-top: 20px;
+    width: 80%;
     
 }
 
-/* word-wrap permet de couper les  longs mots et de les faire passer à la ligne */
- 
-p {
-    word-wrap: break-word;
-    text-align: center;
-}
+    
 
-/* BOUTON MODIFIER ET SUPPRIMER */
+
+/* BOUTON MODIFIER ET SUPPRIMER */                      /*word-wrap: break-word; word-wrap permet de couper les  longs mots et de les faire passer à la ligne */
 .btn {
-    background-color: white;
+        margin-top: -20px;
+        margin-left: 20%;
+        text-align: center;
+	font-size: 30px;
+	background-color: #014ea5;
+        width: 20%;
     
 }
-
-.modif {
-    color : black;
-    font-size : 1.2em;
-    margin-right: 150px;
-   }
-   
-   @media(max-width:768px) {
-   .modif {
-    font-size : 1em;
-    margin-right: 0px;
-   }
-   }
-   
-   @media(max-width:768px) {
-       .modif {
-           
-           margin-right: 20px;
-       }
-   }
-
-.supp {
-    color : black;
-    font-size : 1.2em;
-}
-
-@media(max-width:768px) {
-    .supp {
-        font-size : 1em;
-}
-   }
-   
-  
-
- 
