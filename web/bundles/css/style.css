@@ -69,11 +69,6 @@ header {
   text-decoration: none; }
 
 /* skin du bouton-menu déroulant */
-.dropdown {
-  padding-top: 14px;
-  font-family: 'Lobster', cursive;
-  font-size: 20px; }
-
 .btn-primary {
   color: #fff;
   background-color: black !important;
@@ -82,19 +77,20 @@ header {
   font-size: 25px !important;
   margin-top: -10px; }
 
-/* skin du bouton-menu déroulant responsive */
-@media (max-width: 992px) {
-  .open > .dropdown-menu {
-    margin-left: 40%; } }
-@media (max-width: 768px) {
-  .open > .dropdown-menu {
-    margin-left: 40%; } }
+.dropdown {
+  padding-top: 14px;
+  font-family: 'Lobster', cursive;
+  font-size: 20px; }
+
+.dropdown-menu > li > a {
+  text-align: center; }
+
 /* page accueil blog */
 #titreaccueil {
   text-align: center;
   font-size: 100px;
   margin-bottom: 150px;
-  padding-top: 50px;
+  padding-top: 60px;
   font-family: 'Lobster', cursive; }
 
 /* responsive xs page accueil blog */
@@ -110,7 +106,9 @@ header {
 .titresections {
   text-align: center;
   font-family: 'Lobster', cursive;
-  font-size: 40px; }
+  font-size: 40px;
+  margin-top: 88px;
+  margin-bottom: 20px; }
 
 p {
   font-family: 'Lobster', cursive;
@@ -160,6 +158,9 @@ p {
   p {
     font-size: 1em; } }
 /* STYLE POUR  LES PAGES ARTICLES ET BROUILLONS */
+h3 {
+  text-align: center; }
+
 @media (max-width: 768px) {
   .thumbnail {
     margin-left: 100px; } }
