@@ -31,7 +31,7 @@
 label{
     font-size: 40px;
     width: 25%;
-    color:ghostwhite;
+    color:#014ea5;
 }
 label[for="adminbundle_user_avatar"]{
     display: none;
