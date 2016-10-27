@@ -21,20 +21,20 @@
         <h1 class="titradmin">Articles</h1>
         <!--Ci dessous je récupère les articles publiés-->
         {% for news in listNews%}
-            {%if news.etatpublication == "publie"%}
+            {%if news.etatpublication == "publier"%}
                 
                         <div class="container-fluid liste">
                             
                                     <div class="thumbnail col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
                                         
-                                        <h3>Titre</h3><p>{{news.titre}}</p>
-                                        <h3>Image</h3><p>{{news.image}}</p>
-                                        <h3>Article</h3><p>{{news.article}}</p>
-                                        <h3>Auteur</h3><p>{{news.auteur}}</p>
-                                        <h3>Date</h3><p>{{news.date|date("m/d/Y")}}</p>
-                                        <h3>Catégorie</h3><p>{{news.categorie}}</p>
-                                        <h3>Etat de la publication</h3><p>{{news.etatpublication}}</p>
-                                        
+                                        <h2>{{news.titre}}</h2>
+                                        <p><img src ="../{{news.image}}"/></p>
+                                        <p>{{news.article}}</p>
+                                        <h3>Catégorie : </h3><p>{{news.categorie}}</p>
+                                        <h3>Etat : </h3><p>{{news.etatpublication}}</p>
+                                        <h3>Ecrit par : </h3><p>{{news.auteur}}</p>
+                                        <h3>Le : </h3><p>{{news.date|date("m/d/Y")}}</p>
+                                        <h3>A : </h3><p>{{news.date|date("h:m")}}</p>
                                     </div>
                                 </div>
                            

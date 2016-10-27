@@ -3,6 +3,8 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -30,9 +32,9 @@ class News
     private $titre;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     *@ORM\Column(name="image", type="string", length=600)
+     * @Assert\File()
      */
     private $image;
     
@@ -105,19 +107,16 @@ class News
     {
         return $this->titre;
     }
-
+    
     /**
      * Set image
      *
-     * @param string $image
+     * @param UploadedFile $image
      *
      * @return News
      */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
+    function setImage($uploadedFile) {
+        $this->image = $uploadedFile ;
     }
 
     /**

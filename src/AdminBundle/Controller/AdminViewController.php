@@ -2,10 +2,10 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Entity\Categorie;
 use AdminBundle\Entity\Etatpublication;
 use AdminBundle\Entity\News;
 use AdminBundle\Entity\User;
-use AdminBundle\Form\NewsType;
 use AdminBundle\Form\UserType;
 use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -14,7 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
-
 
 /**
  * Description of AdminViewController
@@ -62,7 +61,7 @@ class AdminViewController extends Controller {
         $user_form = $this->createForm(UserType::class, $user);
         if ($request->getMethod() == 'POST') {
             $user_form->handleRequest($request);
-            
+
 //            if($request->get('mdp') !== ""){
 //                $user->setPassword($request->get('mdp'));
 //            }
@@ -72,7 +71,7 @@ class AdminViewController extends Controller {
             $nom = $image->getClientOriginalName();
             $image->move("img/" . $user->getPseudo(), $nom);
 
-            $user->setAvatar("img/" . $user->getPseudo() . "/" .$nom);
+            $user->setAvatar("img/" . $user->getPseudo() . "/" . $nom);
             $user->setSalt("");
             $user->setRoles(array('ROLE_USER'));
 
@@ -98,7 +97,7 @@ class AdminViewController extends Controller {
     public function getArticles() {
         //ici je récupere toutes les news
         $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-        $listNews = $repository->findAll();
+        $listNews = $repository->findBy(array(), array('date' => 'desc') , null , null);
 
         return $this->render('AdminBundle:Default:articles.html.twig', array('listNews' => $listNews));
     }
@@ -125,10 +124,17 @@ class AdminViewController extends Controller {
         //quand le formulaire est envoyé on envoi un nouvel article
         if ($request->getMethod() == 'POST') {
             $news->handleRequest($request);
+            $img = $article->getImage();
+
+            $nom = $img->getClientOriginalName();
+            $img->move("img/article", $nom);
+
+
             $em = $this->getDoctrine()->getEntityManager();
             //Met le pseudo dans l'utilisateur courant dans le champ auteur
 
             $article->setAuteur($this->getUser()->getPseudo());
+            $article->setImage("img/article/" . $nom);
             $article->setDate(new DateTime());
 
             $em->persist($article);
@@ -143,15 +149,31 @@ class AdminViewController extends Controller {
      * @Route("/modif/{id}", name="modif")
      */
     public function modifArticle($id, Request $request) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $article = $em->find('AdminBundle:News', $id);
-         if ($this->getUser()->getRoles() === array('ROLE_ADMIN')) {
+        $image_courante = $article->getImage();
+
+        $nom_img = explode("/", $image_courante);
+        $article->setImage(new UploadedFile($article->getImage(), $nom_img[2]));
+
+        if ($this->getUser()->getRoles() === array('ROLE_ADMIN')) {
             $news = $this->CreateFormAdmin($article);
         } else {
             $news = $this->CreateFormUser($article);
         }
+
         if ($request->getMethod() == 'POST') {
             $news->handleRequest($request);
+
+            if ($article->getImage() == null) {//Si on ne veut pas changer d'image
+                $article->setImage($image_courante);
+            } else {
+                $image = $article->getImage();
+                $nom = $image->getClientOriginalName();
+                $image->move("img/article/", $nom);
+                $article->setImage("img/article/" . $nom);
+            }
+
             $em->merge($article);
             $em->flush();
             return $this->redirectToRoute('articles');
@@ -163,7 +185,7 @@ class AdminViewController extends Controller {
      * @Route("/supp/{id}", name="supp")
      */
     public function suppArticle($id) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $news = $em->find('AdminBundle:News', $id);
         //ici je récupère l'entité par l'idée
         $em->remove($news);
@@ -181,10 +203,10 @@ class AdminViewController extends Controller {
         //ici je récupere toutes les brouillons        
         if ($this->getUser()->getRoles() == array('ROLE_ADMIN')) {
             $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-            $listBrouillons = $repository->findAll();
+            $listBrouillons = $repository->findBy(array(),array('date' => 'desc'));
         } else if ($this->getUser()->getRoles() == array('ROLE_USER')) {
             $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-            $listBrouillons = $repository->findBy(array('auteur' => $this->getUser()->getPseudo()));
+            $listBrouillons = $repository->findBy(array('auteur' => $this->getUser()->getPseudo() ,  array('date' => 'desc')));
         }
 
         return $this->render('AdminBundle:Default:brouillons.html.twig', array('listBrouillons' => $listBrouillons));
@@ -200,12 +222,14 @@ class AdminViewController extends Controller {
 
         return $this->render('AdminBundle:Default:profil.html.twig', array('monProfil' => $monProfil));
     }
+    
+    
 
     /**
      * @Route("/modifprofil", name="modifprofil")
      */
     public function getModifprofil(Request $request) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
         $avatar_courant = $user->getAvatar();
@@ -237,16 +261,71 @@ class AdminViewController extends Controller {
 
 //            $response = new JsonResponse(); //Retour des données au format Json
 //            $response->setData(array('reussite' => 'Votre profil a bien été modifié !'));//Retour en format Json
-
 //            return $this->redirectToRoute("modifprofil");
         }
         return $this->render('AdminBundle:Default:modifprofil.html.twig', array('form' => $profil->createView()));
     }
 
+    /**
+     * @Route("/base", name="base")
+     */
+    public function Base() {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $nom_categorie[0] = "ordinateur";
+        $nom_categorie[1] = "tablette";
+        $nom_categorie[2] = "telephone";
+
+        $nom_etat[0] = "publier";
+        $nom_etat[1] = "brouillon";
+
+        $catego = new Categorie();
+        $catego1 = new Categorie();
+        $catego2 = new Categorie();
+
+        $etat1 = new Etatpublication();
+        $etat2 = new Etatpublication();
+
+        $user_admin = new User();
+
+
+
+        $catego->setNom($nom_categorie[0]);
+        $catego1->setNom($nom_categorie[1]);
+        $catego2->setNom($nom_categorie[2]);
+
+        $etat1->setEtat($nom_etat[0]);
+        $etat2->setEtat($nom_etat[1]);
+
+        $user_admin->setRoles(array('ROLE_ADMIN'));
+        $user_admin->setUsername("admin");
+        $user_admin->setAvatar("admin");
+        $user_admin->setNom("admin");
+        $user_admin->setPrenom("admin");
+        $user_admin->setPseudo("admin");
+        $user_admin->setPassword("admin");
+        $user_admin->setSalt("");
+
+        $em->persist($catego);
+        $em->persist($catego1);
+        $em->persist($catego2);
+
+        $em->persist($etat1);
+        $em->persist($etat2);
+
+        $em->persist($user_admin);
+
+        $em->flush();
+
+
+        return $this->redirectToRoute("accueil");
+    }
+
     public function CreateFormAdmin($article) {
         $news = $this->createFormBuilder($article)
                 ->add('titre')
-                ->add('image')
+                ->add('image', null, array('required' => false))
                 ->add('article', TextareaType::class)
                 ->add('categorie')
                 ->add('etatpublication')
@@ -258,7 +337,7 @@ class AdminViewController extends Controller {
     public function CreateFormUser($article) {
         $news = $this->createFormBuilder($article)
                 ->add('titre')
-                ->add('image')
+                ->add('image', null, array('required' => false))
                 ->add('article', TextareaType::class)
                 ->add('categorie')
                 ->add('Envoyer', SubmitType::class)

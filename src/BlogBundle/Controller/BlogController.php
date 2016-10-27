@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BlogController extends Controller {
     /**
-     * @Route("/accueil", name="accueil")
+     * @Route("/", name="accueil")
      */
     public function getAccueil()
     {
@@ -21,7 +21,7 @@ class BlogController extends Controller {
     public function getArticlesOrdi() {
         //ici je récupere toutes les news ordinateur
         $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-        $listNews = $repository->findAll();
+        $listNews = $repository->findBy(array(), array('date' => 'desc') , null , null);
 
         return $this->render('BlogBundle:Default:ordi.html.twig', array('listNews' => $listNews));
     }
@@ -32,7 +32,7 @@ class BlogController extends Controller {
     public function getArticlesTablette() {
         //ici je récupere toutes les news tablette
         $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-        $listNews = $repository->findAll();
+        $listNews = $repository->findBy(array(), array('date' => 'desc') , null , null);
 
         return $this->render('BlogBundle:Default:tablette.html.twig', array('listNews' => $listNews));
     }
@@ -43,7 +43,7 @@ class BlogController extends Controller {
     public function getArticlesTelephone() {
         //ici je récupere toutes les news telephone
         $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-        $listNews = $repository->findAll();
+        $listNews = $repository->findBy(array(), array('date' => 'desc') , null , null);
 
         return $this->render('BlogBundle:Default:telephone.html.twig', array('listNews' => $listNews));
     }
