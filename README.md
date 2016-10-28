@@ -34,15 +34,15 @@ Blog
     ## Installation de la base de données:
 
     ### * -Les points abordés:
-        ### 1. Créez la base de données sur phpmyadmin (nom = blog)
+        ### 1. Créez la base de données (terminal : database:create)
         ### 2. Créez le fichier parameters.yml dans app/config si il n'existe pas
         ### 3. Liez votre base de données dans parameters.yml
         ### 4. Synchroniser la BDD avec le projet blog dans le terminal : 
                php bin/console doctrine:schema:update --force 
-        ### 5. Dans la table catégorie, insérez 3 noms dans l'ordre suivant -> "ordinateur", "tablette", "telephone"
-        ### 6. Dans la table etatpublication, insérez 2 noms dans l'ordre suivant -> "publie", "brouillon"
-        ### 7. Pensez aux droits d'administration: sudo chmod -R 777 *
-        ### 8. Rajoutez "accueil" dans l'URL
+        ### 5. Pensez aux droits d'administration: sudo chmod -R 777 *
+        ### 6. Tapez "base" dans l'url pour initialisé les tables catégories et étatspublication et pour créer un compte admin .
+        Identifiant : admin 
+        Mot de passe : admin
 
 # **Liens outils collaboratifs:**  
 

@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -97,7 +98,7 @@ class AdminViewController extends Controller {
     public function getArticles() {
         //ici je récupere toutes les news
         $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-        $listNews = $repository->findBy(array(), array('date' => 'desc') , null , null);
+        $listNews = $repository->findBy(array(), array('date' => 'desc'), null, null);
 
         return $this->render('AdminBundle:Default:articles.html.twig', array('listNews' => $listNews));
     }
@@ -203,10 +204,10 @@ class AdminViewController extends Controller {
         //ici je récupere toutes les brouillons        
         if ($this->getUser()->getRoles() == array('ROLE_ADMIN')) {
             $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-            $listBrouillons = $repository->findBy(array(),array('date' => 'desc'));
+            $listBrouillons = $repository->findBy(array(), array('date' => 'desc'));
         } else if ($this->getUser()->getRoles() == array('ROLE_USER')) {
             $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
-            $listBrouillons = $repository->findBy(array('auteur' => $this->getUser()->getPseudo() ,  array('date' => 'desc')));
+            $listBrouillons = $repository->findBy(array('auteur' => $this->getUser()->getPseudo(), array('date' => 'desc')));
         }
 
         return $this->render('AdminBundle:Default:brouillons.html.twig', array('listBrouillons' => $listBrouillons));
@@ -222,8 +223,6 @@ class AdminViewController extends Controller {
 
         return $this->render('AdminBundle:Default:profil.html.twig', array('monProfil' => $monProfil));
     }
-    
-    
 
     /**
      * @Route("/modifprofil", name="modifprofil")
@@ -267,6 +266,27 @@ class AdminViewController extends Controller {
     }
 
     /**
+     * @Route("/modifPass", name="modifPass")
+     */
+    public function getModifPass(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        if ($request->getMethod() == "POST") {
+            $user->setPassword($request->get('mdp'));
+
+            $em->merge($user);
+            $em->flush();
+            $response = new JsonResponse(); //Retour des données au format Json
+            $response->setData(array('reussite' => 'Votre mot de passe a bien été modifié !')); //Retour en format Json
+            return $response;
+        }
+
+        return $this->render('AdminBundle:Default:modifPass.html.twig');
+    }
+
+    /**
      * @Route("/base", name="base")
      */
     public function Base() {
@@ -289,8 +309,6 @@ class AdminViewController extends Controller {
 
         $user_admin = new User();
 
-
-
         $catego->setNom($nom_categorie[0]);
         $catego1->setNom($nom_categorie[1]);
         $catego2->setNom($nom_categorie[2]);
@@ -300,12 +318,14 @@ class AdminViewController extends Controller {
 
         $user_admin->setRoles(array('ROLE_ADMIN'));
         $user_admin->setUsername("admin");
-        $user_admin->setAvatar("admin");
+        $user_admin->setAvatar("img/admin/avatar.png");
         $user_admin->setNom("admin");
         $user_admin->setPrenom("admin");
         $user_admin->setPseudo("admin");
         $user_admin->setPassword("admin");
         $user_admin->setSalt("");
+        mkdir("img/admin");
+        rename("img/avatar.png" , "img/admin/avatar.png");
 
         $em->persist($catego);
         $em->persist($catego1);

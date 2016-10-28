@@ -1,0 +1,19 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../script/verifprofil.js"></script>
+<body>
+
+    <div id="mdp" style="display: none">{{app.user.password}}</div>
+
+    <div id="modifmdp">
+
+        <h2>Modifiez votre mot de passe</h2>    
+        <p>Entrez votre mot de passe actuel</p>
+        <input class="motdepasse" id="mdpactu" type="password" placeholder="Mot de passe actuel">
+        <p>Nouveau de passe</p>
+        <input class="motdepasse" id="mdpnew" type="password" placeholder="Nouveau mot de passe">
+        <p>Confirmez votre mot de passe</p>
+        <input class="motdepasse" id="mdpconf" type="password" placeholder="Confirmez votre mot de passe">
+        <br><input id="submit" type="button" value="Modifier">
+
+    </div>
+</body>

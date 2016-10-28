@@ -1,21 +1,17 @@
 $('document').ready(function () {
+$('#adminbundle_user_password').css('display' , 'none');
 
-
-    $('form').submit(function (event) {//A l'envoi du formulaire
-
-
-        //Si au moins un des champs mots de passes n'est pas vide , donc si on veux changer de mot de passe
-        if ($('#mdpactu').val() !== "" || $('#mdpnew').val() !== "" || $('#mdpconf').val() !== "") {
+    $('#submit').click(function () {//A l'envoi du formulaire
 
             //Si les champs ne sont pas remplis correctement ou vides
             if ($('#mdpactu').val() !== $('#mdp').text() || $('#mdpnew').val() !== $('#mdpconf').val() || $('#mdpactu').val() === "" || $('#mdpnew').val() === "" || $('#mdpconf').val() === "") {
-                event.preventDefault();
+                
                 alert('Vérifiez vos informations');
             } else {
 
                 //On lance une requete ajax pour envoyer les valeurs des champs
                 $.ajax({
-                    url: 'modifprofil',
+                    url: 'modifPass',
                     type: 'POST',
                     data: 'mdp=' + $('#mdpnew').val(),
                     dataType: 'text',
@@ -26,7 +22,7 @@ $('document').ready(function () {
                     }
                 });
             }
-        }
+        
 
     });
 });
