@@ -43,3 +43,28 @@ font-size:17px;
 .main{
    text-align:right;
 }
+/* bouton like */
+
+*{transition: all 0.3s linear;}
+
+.hidden{
+  font-size: 0;
+}
+
+.like,p{
+  font-family: 'Open Sans';
+}
+
+.like-toggle1{
+  
+  border: none;
+  width: 40px;
+  height: 30px;
+  font-size: 1.3em;
+  border-radius: 100px;
+}
+
+.like-active.basic{
+  background: red;
+  color: white;
+}

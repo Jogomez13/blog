@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $("button").click(function(){
+  $("#bouton1").click(function(){
     $(".dropdown-menu").animate ({
       height: 'toggle'
     });
