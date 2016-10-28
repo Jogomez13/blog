@@ -1,32 +1,36 @@
 {% extends "BlogBundle:Default:accueil.html.twig" %}
 {%block body %}
 
-        <h2 class="titresections">Tablette</h2>
+    <h2 class="titresections">Tablette</h2>
     <!--Ci dessous je récupère les articles tablettes publiés-->
-       {% for news in listNews%}
+    {% for news in listNews%}
 
-           {%if news.etatpublication == "publier"%}
-           {%if news.categorie== "tablette"%}
+        {%if news.etatpublication == "publier"%}
+            {%if news.categorie== "tablette"%}
+                <div>
                     <div>
-                        <div>
-                            <div class="container-fluid">
-                                <div class="thumbnail col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
-                                    <p class="newtitre">{{news.titre}}</p>
-                                   <img class="image img-responsive" src ="../{{news.image}}"/>
-                                    <p class="newarticle">{{news.article}}</p>
-                                </div>
-                            </div>
-                            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2  col-md-8 col-md-offset-2 main">
-                                    <p class="newauteur">Ecrit par : {{news.auteur}}</p>
-                                    <p class="newdate">Publié le : {{news.date|date("m/d/Y")}} à {{news.date|date("h:m")}}</p>   
+                        <div class="container-fluid">
+                            <div class="thumbnail col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+                                <p class="newtitre">{{news.titre}}</p>
+                                <img class="image img-responsive" src ="../{{news.image}}"/>
+                                <p class="newarticle">{{news.article}}</p>
                             </div>
                         </div>
+                        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2  col-md-8 col-md-offset-2 main">
+                            <div class='like'>
+                                <button class='like-toggle1 basic'>♥</button>
+                                <span class='hidden'>J'aime</span>
+                            </div> 
+                            <p class="newauteur">Ecrit par : {{news.auteur}}</p>
+                            <p class="newdate">Publié le : {{news.date|date("m/d/Y")}} à {{news.date|date("h:m")}}</p>   
+                        </div>
                     </div>
+                </div>
 
 
 
 
-                {%endif%}
-                {%endif%}
+            {%endif%}
+        {%endif%}
     {% endfor %}
 {%endblock%}

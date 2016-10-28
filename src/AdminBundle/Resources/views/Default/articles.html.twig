@@ -1,58 +1,62 @@
 {% extends "AdminBundle:Default:admin.html.twig"%}
-     {%block style %}
-{#Ici je vais rajouter les css qui s'appliquent uniquement à la page articles  #}
-        {%endblock%}
-        
-            {%block nav %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{path("add")}}">Ajouter un article</a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path("brouillons")}}">Voir {%if app.user.roles[0] == "ROLE_ADMIN"%}les {%else%}mes {%endif%}brouillons</a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path("profil")}}">Voir profil</a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path("admin")}}">Retour sur la page d'admin</a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path("accueil")}}">Retour sur le site</a></li>
-              {%endblock%}
-    
-    {% block articles %}
-            
-        <h1 class="titreadmin">Articles</h1>
-        <!--Ci dessous je récupère les articles publiés-->
-        {% for news in listNews%}
-            {%if news.etatpublication == "publier"%}
-                
+{%block style %}
+    {#Ici je vais rajouter les css qui s'appliquent uniquement à la page articles  #}
+{%endblock%}
+
+{%block nav %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{{path("admin")}}">{%if app.user.username is defined%}
+            Bienvenue {{app.user.pseudo}}</a></li>
+            {%endif%}
+        <li class="nav-item">
+            <a class="nav-link" href="{{path("add")}}">Ajouter un article</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path("brouillons")}}">Voir {%if app.user.roles[0] == "ROLE_ADMIN"%}les {%else%}mes {%endif%}brouillons</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path("profil")}}">Voir profil</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path("admin")}}">Retour sur la page d'admin</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path("accueil")}}">Retour sur le site</a></li>
+            {%endblock%}
+
+            {% block articles %}
+
+                <h1 class="titreadmin">Articles</h1>
+                <!--Ci dessous je récupère les articles publiés-->
+                {% for news in listNews%}
+                    {%if news.etatpublication == "publier"%}
+
                         <div class="container-fluid liste">
-                            
-                                    <div class="thumbnail col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-                                        
-                                        <h2 class="titreadmin">{{news.titre}}</h2>
-                                        <img class="image img-responsive" src ="../{{news.image}}"/>
-                                        <p id="textearticle">{{news.article}}</p>
-                                        <div id="divarticle">
-                                        <h3 class="elementarticle">Catégorie : {{news.categorie}}</h3>
-                                        <h3 class="elementarticle">Etat : {{news.etatpublication}}</h3>
-                                        </div>
-                                        <h3 class="autreelementarticle">Ecrit par : {{news.auteur}}</h3>
-                                        <h3 class="autreelementarticle">Le :{{news.date|date("m/d/Y")}}</h3>
-                                        <h3 class="autreelementarticle">A : {{news.date|date("h:m")}}</h3>
-                                    </div>
+
+                            <div class="thumbnail col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+
+                                <h2 class="titreadmin">{{news.titre}}</h2>
+                                <img class="image img-responsive" src ="../{{news.image}}"/>
+                                <p id="textearticle">{{news.article}}</p>
+                                <div id="divarticle">
+                                    <h3 class="elementarticle">Catégorie : {{news.categorie}}</h3>
+                                    <h3 class="elementarticle">Etat : {{news.etatpublication}}</h3>
                                 </div>
-                           
-                               {%if app.user.roles[0] == "ROLE_ADMIN"%}
-                                   
+                                <h3 class="autreelementarticle">Ecrit par : {{news.auteur}}</h3>
+                                <h3 class="autreelementarticle">Le :{{news.date|date("m/d/Y")}}</h3>
+                                <h3 class="autreelementarticle">A : {{news.date|date("h:m")}}</h3>
+                            </div>
+                        </div>
+
+                        {%if app.user.roles[0] == "ROLE_ADMIN"%}
+
                             <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3 btn">
                                 <a class="bouton modif" href="{{path("modif",{"id":news.id})}}">Modifier un article</a>
-                          
+
                                 <a class="bouton modif" href="{{path("supp",{"id":news.id})}}">Supprimer un article</a>
                             </div>
-                        
+
                         {%endif%}
-                                {%endif%}
-                                    {% endfor %}
+                    {%endif%}
+                {% endfor %}
 
 
-                       
 
-                        {% endblock %}
+
+            {% endblock %}
