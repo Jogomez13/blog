@@ -1,50 +1,57 @@
 <html>
 
-<head>
-       <meta charset="utf-8">
-       <title>Admin</title>
-       <link href="{{ asset('../web/bundles/css/style.css') }}" rel="stylesheet" />
-       <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />      
-       {%block style %}
-{#Ici je vais rajouter les css qui s'appliquent uniquement à la page d'admin   #}
+    <head>
+        <meta charset="utf-8">
+        <title>Admin</title>
+        <link href="{{ asset('../web/bundles/css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />      
+        {%block style %}
+            {#Ici je vais rajouter les css qui s'appliquent uniquement à la page d'admin   #}
         {%endblock%}
-</head>
-     
-<body>
-    <div id="container">
-   
-   <!--nav-horizontal-->
-           
-   <nav class="col-xs-12 navbar navbar-light bg-faded" id="navadmin">
- 
-     <ul class="nav navbar-nav">
-         {%block nav %}
-              <li class="nav-item active">
-                  <a class="nav-link" href="{{path("add")}}">Ajouter un article</a></li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{{path("articles")}}">Voir les articles</a></li>
-              <li class="nav-item">
-                    <a class="nav-link" href="{{path("brouillons")}}">Voir {%if app.user.roles[0] == "ROLE_ADMIN"%}les {%else%}mes {%endif%}brouillons</a></li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{{path("profil")}}">Voir profil</a></li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{{path("accueil")}}">Retour sur le site</a></li>
-              {%endblock%}
-          </ul>
-  
-</nav> 
-        {% block articles %}
-            
-                <h1 class="titradmin">Bienvenue sur votre Espace Membre</h1>
-    
-        
-            
- 
+    </head>
 
-    {% endblock %}
-        
-        
-             
-</body>
+    <body>
+        <div id="container">
 
-</html>
+            <!--nav-horizontal-->
+
+            <nav class="col-xs-12 navbar navbar-light bg-faded" id="navadmin">
+
+                <ul class="nav navbar-nav">
+                    {%block nav %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{path("admin")}}">{%if app.user.username is defined%}
+                                Bienvenue {{app.user.pseudo}}</a></li>
+                                {%endif%}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path("add")}}">Ajouter un article</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path("articles")}}">Voir les articles</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path("brouillons")}}">Voir {%if app.user.roles[0] == "ROLE_ADMIN"%}les {%else%}mes {%endif%}brouillons</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path("profil")}}">Voir profil</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path("accueil")}}">Retour sur le site</a></li>
+
+                            {%endblock%}
+                            </ul>
+
+                        </nav> 
+                        {% block articles %}
+                            {# Ci-dessous message de bienvenue avec le pseudo de l'utilisateur #}
+                            {%if app.user.username is defined%}
+                                <h1 class="titradmin">Bienvenue sur votre espace membre {{app.user.pseudo}}</h1>
+                            {%endif%}
+
+
+
+
+
+                        {% endblock %}
+
+
+
+                </body>
+
+            </html>

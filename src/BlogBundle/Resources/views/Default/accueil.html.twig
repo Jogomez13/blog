@@ -17,6 +17,7 @@
 
     <header>
          <h1 id='titreprincipal'>Le blog de l'actualité high tech</h1>
+         
     </header>
 
     <!--barre de nav bootstrap avec effet dropdown-->
@@ -43,8 +44,11 @@
                       <li><a href="{{ path('contact') }}">Contact</a></li>
                       
                   </ul>
+                     
          </div>
         </ul>
+    </nav>
+                      
     
          
     
@@ -53,7 +57,10 @@
     {%block body %}
         
 <body>
-    <h1 id='titreaccueil'>Bienvenue</h1>
+{# Ci-dessous message de bienvenue avec le pseudo de l'utilisateur #}
+    {%if app.user.username is defined%}
+    <h1 id='titreaccueil'>Bienvenue {{app.user.pseudo}}</h1>
+    {%endif%}
 </body>
     {%endblock %}  
 
