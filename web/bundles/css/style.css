@@ -131,7 +131,8 @@ p {
   margin-left: 2%;
   margin-right: 2%;
   margin-bottom: 2%;
-  font-size: 20px; }
+  font-size: 20px;
+  word-wrap: break-word; }
 
 /* responsive xs article */
 @media (max-width: 768px) {

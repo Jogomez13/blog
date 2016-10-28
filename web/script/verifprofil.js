@@ -3,16 +3,13 @@ $('document').ready(function () {
 $('#adminbundle_user_password').css('display' , 'none');
     $('#submit').click(function () {//A l'envoi du formulaire
 
-
-
-
         //Si les champs ne sont pas remplis correctement ou vides
         if ($('#mdpactu').val() !== $('#mdp').text() || $('#mdpnew').val() !== $('#mdpconf').val() || $('#mdpactu').val() === "" || $('#mdpnew').val() === "" || $('#mdpconf').val() === "") {
             
             alert('Vérifiez vos informations');
         } else {
 
-            //On lance une requete ajax pour envoyer les valeurs des champs
+            //On lance une requete ajax pour envoyer la valeur du nouveau mot de passe
             $.ajax({
                 url: 'modifPass',
                 type: 'POST',
@@ -21,6 +18,11 @@ $('#adminbundle_user_password').css('display' , 'none');
                 success: function (data, textStatus, jqXHR) {
                     var obj = $.parseJSON(data);//Retour des données en format Json
                     alert(obj.reussite);//Affichage
+                    
+                    //On vide les 3 champs
+                    $('#mdpnew').val("");
+                    $('#mdpactu').val("");
+                    $('#mdpconf').val("");
 
                 }
             });
