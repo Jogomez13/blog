@@ -12,7 +12,7 @@ class BlogController extends Controller {
      */
     public function getAccueil()
     {
-        return $this->render('BlogBundle:Default:accueil.html.twig');
+        return $this->render('accueil.html.twig');
     }
     
      /**
@@ -23,7 +23,7 @@ class BlogController extends Controller {
         $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
         $listNews = $repository->findBy(array(), array('date' => 'desc') , null , null);
 
-        return $this->render('BlogBundle:Default:ordi.html.twig', array('listNews' => $listNews));
+        return $this->render('ordi.html.twig', array('listNews' => $listNews));
     }
     
      /**
@@ -34,7 +34,7 @@ class BlogController extends Controller {
         $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
         $listNews = $repository->findBy(array(), array('date' => 'desc') , null , null);
 
-        return $this->render('BlogBundle:Default:tablette.html.twig', array('listNews' => $listNews));
+        return $this->render('tablette.html.twig', array('listNews' => $listNews));
     }
     
     /**
@@ -45,7 +45,7 @@ class BlogController extends Controller {
         $repository = $this->getDoctrine()->getManager()->getRepository('AdminBundle:News');
         $listNews = $repository->findBy(array(), array('date' => 'desc') , null , null);
 
-        return $this->render('BlogBundle:Default:telephone.html.twig', array('listNews' => $listNews));
+        return $this->render('telephone.html.twig', array('listNews' => $listNews));
     }
     
     
@@ -54,7 +54,7 @@ class BlogController extends Controller {
      */
     public function getContact()
     {
-        return $this->render('BlogBundle:Default:contact.html.twig');
+        return $this->render('contact.html.twig');
     }
      
 }

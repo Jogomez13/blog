@@ -1,4 +1,4 @@
-{% extends "BlogBundle:Default:accueil.html.twig" %}
+{% extends "accueil.html.twig" %}
 {%block body %}
 
         <h2 class="titresections">Téléphone</h2>
@@ -12,13 +12,13 @@
                             <div class="container-fluid">
                                 <div class="thumbnail col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
                                     <p class="newtitre">{{news.titre}}</p>
-                                    <p class="newimage"><img src ="../{{news.image}}"/></p>
+                                    <img class="image img-responsive" src ="../{{news.image}}"/>
                                     <p class="newarticle">{{news.article}}</p>
                                 </div>
                             </div>
                             <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2  col-md-8 col-md-offset-2 main">
                                     <p class="newauteur">Ecrit par : {{news.auteur}}</p>
-                                    <p class="newdate">Publié le : {{news.date|date("m/d/Y")}} à {{news.date|date("h:m")}}</p>
+                                    <p class="newdate">Publié le : {{news.date|date("d/m/Y")}} à {{news.date|date("h:i")}}</p>
                             </div>
                         </div> 
                     </div>

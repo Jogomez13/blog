@@ -1,4 +1,7 @@
 /* FIN STYLE POUR LA PAGE PROFIL */
+p{
+    font-size:1.4em;
+}
 .profil {
     text-align: center;
 }
@@ -6,15 +9,23 @@
 .modifprofil {
     text-align: center;
     color : black;
-    font-size : 1.2em;
     margin-top: 30px;
     margin-bottom: 50px;
+    border-radius: 2px 2px 2px 2px; 
+    padding:5px 15px;
+    font-size:19px;
+    background-color : #014ea5;
+    color : white;
    }
    
    #titrephotoprofil {
        margin-bottom: 100px;
+       font-family: 'Lobster', cursive;
    }
    
+   .soustitreprofil{
+       font-family: 'Lobster', cursive;
+   }
    #photoprofil {
        width : 200px;
        height : 200px;
@@ -22,3 +33,4 @@
        margin-bottom: 50px;
    }
    
+ 
