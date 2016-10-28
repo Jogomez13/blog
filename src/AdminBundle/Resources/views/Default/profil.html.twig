@@ -1,0 +1,48 @@
+{% extends "AdminBundle:Default:admin.html.twig"%}
+
+{%block style %}
+    {#Ici je vais rajouter les css qui s'appliquent uniquement à la page profil   #}
+{%endblock%}
+
+{%block nav %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{{path("add")}}">Ajouter une article</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{path("articles")}}">Voir articles</a></li>
+    <li class="nav-item">
+                            <a class="nav-link" href="{{path("brouillons")}}">Voir {%if app.user.roles[0] == "ROLE_ADMIN"%}les {%else%}mes {%endif%}brouillons</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{path("modifprofil")}}">Modifier mon profil</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{path("admin")}}">Retour page admin</a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{path("accueil")}}">Retour sur le site</a></li>
+    {%endblock%}
+
+{% block articles %}
+    <h1 class="titreadmin">Mon profil</h1>
+    <!--Ci dessous je récupère le profil-->
+    {% for profil in monProfil%}
+        <div class="container-fluid liste">
+
+
+            <div class="thumbnail profil col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                <h3 id="titrephotoprofil">Photo de profil :</h3><img id ="photoprofil" src ="../{{profil.avatar}}"/>
+                <h3 class="soustitreprofil">Email :</h3><p>{{profil.username}}</p>
+                <h3 class="soustitreprofil">Nom :</h3><p>{{profil.nom}}</p>
+                <h3 class="soustitreprofil">Prénom :</h3><p>{{profil.prenom}}</p>
+                <h3 class="soustitreprofil">Pseudo :</h3><p>{{profil.pseudo}}</p>
+
+
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <a class="col-xs-3 col-xs-offset-6 col-sm-3 col-sm-offset-6  col-md-2 col-md-offset-5 modifprofil" href="{{path("modifprofil")}}">Modifier mon profil</a>
+    </div>
+</div>
+
+{% endfor %}
+
+{%endblock%}

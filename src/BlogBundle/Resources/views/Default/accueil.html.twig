@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>  
+        <meta charset="utf-8">
+  <meta name="description" content="Site consacré à l'actualité des ordinateurs, des tablettes et des téléphones" />
+  <meta name="author" content="Jonathan Gomez">
+
+  <meta name="keywords" content="téléphone, mobile, apple, iphone, android, smartphone, phone, tablette, ipad, samsung,
+        ordinateur, asus, dell, hp, ordi portable, portable, ordi, tel, nokia, appareil, actualité mobile, actualité ordinateur,
+        actualité tablette, informatique, actualité informatique">
+        <link href="{{ asset('../web/bundles/css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />
+        
+    </head>
+    <title>Blog</title>
+
+
+    <header>
+         <h1 id='titreprincipal'>Le blog de l'actualité high tech</h1>
+         
+    </header>
+
+    <!--barre de nav bootstrap avec effet dropdown-->
+
+    <nav class="col-xs-12 containernav">
+        <ul class="groupelistenav">
+          <li class="listenav"><a href="{{ path('telephone') }}">Téléphone</a></li>
+          <li class="listenav"><a href="{{ path('ordinateur') }}">Ordinateur</a></li>
+          <li class="listenav"><a href="{{ path('tablette') }}">Tablette</a></li>
+          <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle"type="button"
+              data-toggle="dropdown" class="dropdown espace">Espace membre
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                      
+                      
+                      {%if app.user.username is defined%}
+                      <li><a href="{{ path('admin') }}">Admin</a></li>
+                      <li><a href="{{ path('logout') }}">Deconnexion</a></li>
+                      {%else%}
+                      <li><a href="{{ path('connexion') }}">Connexion</a></li>
+                      <li><a href="{{ path('inscription') }}">Inscription</a></li>
+                      {%endif%}
+                      <li><a href="{{ path('contact') }}">Contact</a></li>
+                      
+                  </ul>
+                     
+         </div>
+        </ul>
+    </nav>
+                      
+    
+         
+    
+   <!--Block sections ordinateur/tablette/portable-->
+
+    {%block body %}
+        
+<body>
+{# Ci-dessous message de bienvenue avec le pseudo de l'utilisateur #}
+    {%if app.user.username is defined%}
+    <h1 id='titreaccueil'>Bienvenue {{app.user.pseudo}}</h1>
+    {%endif%}
+</body>
+    {%endblock %}  
+
+    <footer class="col-xs-12"> 
+        <p class="copyright">Développé & propulsé par : <a href="http://www.driad.fr/"> Charles-André PALADE</a><a href="http://jonathan-gomez.fr/">, Jonathan GOMEZ</a><a href="http://thibaut-figueres.fr/">, Thibaut FIGUERES</a><a href="">, Gaston SABOY</a></p>     
+    </footer>
+<script type="text/javascript" src="{{asset('../vendor/twbs/bootstrap/js/tests/vendor/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('../vendor/twbs/bootstrap/dist/js/bootstrap.js')}}"></script>
+<script type="text/javascript" src="../script/dropdown.js"></script>
+</html>
