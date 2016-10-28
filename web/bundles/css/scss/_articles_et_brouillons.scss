@@ -7,21 +7,26 @@
     font-size: 48px;
     text-align: center;
     font-family: 'Lobster', cursive;
+    word-wrap: break-word;
 }
+/*word-wrap: break-word; word-wrap permet de couper les  longs mots et de les faire passer à la ligne */
 #textearticle{
     margin-top: 40px;
     margin-left: 10%;
     margin-right: 10%;
     text-align: justify;
+    word-wrap: break-word;
+    font-size : 1.4em;
 }
 #divarticle{
     margin-top: 20px;
     text-align: left;
 }
-.imageadmin{
-    
-        max-height: 10%;
-        max-width: 80%;
+.image {
+     width:300px;
+     height:300px !important;
+     margin-bottom: 30px;
+     
     }
     
     .elementarticle{
@@ -42,16 +47,17 @@ p{
     
 }
 
-    
+
+.modif {   
+    border-radius: 2px 2px 2px 2px; 
+    padding:5px 15px;
+    font-size:19px;
+}
 
 
-/* BOUTON MODIFIER ET SUPPRIMER */                      /*word-wrap: break-word; word-wrap permet de couper les  longs mots et de les faire passer à la ligne */
-.btn {
-        margin-top: -20px;
-        margin-left: 20%;
-        text-align: center;
-	font-size: 30px;
-	background-color: #014ea5;
-        width: 20%;
+.bouton {
+    background-color : #014ea5;
+    color : white;
     
 }
+

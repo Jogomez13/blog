@@ -18,28 +18,28 @@
 
 {% block articles %}
 
-    <h1 class="titradmin">{%if app.user.roles[0] == "ROLE_ADMIN"%}Les {%else%}Mes {%endif%} brouillons</h1>
+    <h1 class="titreadmin">{%if app.user.roles[0] == "ROLE_ADMIN"%}Les {%else%}Mes {%endif%} brouillons</h1>
     <!--Ci dessous je récupère les articles-->
     {% for brouillon in listBrouillons%}
         {%if brouillon.etatpublication == "brouillon"%}
 
             <div class="container-fluid liste">
 
-                <div class="thumbnail col-sm-8 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                <div class="thumbnail col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
                     <h2 class="titreadmin">{{brouillon.titre}}</h2>
-                    <p><img class="imageadmin" src ="../{{brouillon.image}}"/></p>
+                    <img class="image img-responsive"  src ="../{{brouillon.image}}"/>
                     <p id="textearticle">{{brouillon.article}}</p>
-                    <h3 class="elementarticle">Catégorie{{brouillon.categorie}}</h3>
-                    <h3 class="elementarticle">Etat de la publication{{brouillon.etatpublication}}</h3>
+                    <h3 class="elementarticle">Catégorie : {{brouillon.categorie}}</h3>
+                    <h3 class="elementarticle">Etat de la publication : {{brouillon.etatpublication}}</h3>
                     <h3 class="autreelementarticle">Ecrit par : {{brouillon.auteur}}</h3>
                     <h3 class="autreelementarticle">Le : {{brouillon.date|date("m/d/Y")}}</h3>
                     <h3 class="autreelementarticle">A : {{brouillon.date|date("h:m")}}</h3>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3 btn">
-                <a class="modif" href="{{path("modif",{"id":brouillon.id})}}">Modifier un brouillon</a>
-                <a class="supp" href="{{path("supp",{"id":brouillon.id})}}">Supprimer un brouillon</a>
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3 btn">
+                <a class="bouton modif" href="{{path("modif",{"id":brouillon.id})}}">Modifier un brouillon</a>
+                <a class="bouton modif" href="{{path("supp",{"id":brouillon.id})}}">Supprimer un brouillon</a>
             </div>
         </div>
     {%endif%}

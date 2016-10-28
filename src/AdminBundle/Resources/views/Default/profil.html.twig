@@ -20,7 +20,7 @@
     {%endblock%}
 
 {% block articles %}
-    <h1 class="titradmin">Mon profil</h1>
+    <h1 class="titreadmin">Mon profil</h1>
     <!--Ci dessous je récupère le profil-->
     {% for profil in monProfil%}
         <div class="container-fluid liste">
@@ -28,10 +28,10 @@
 
             <div class="thumbnail profil col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                 <h3 id="titrephotoprofil">Photo de profil :</h3><img id ="photoprofil" src ="../{{profil.avatar}}"/>
-                <h3>Email :</h3><p>{{profil.username}}</p>
-                <h3>Nom :</h3><p>{{profil.nom}}</p>
-                <h3>Prénom :</h3><p>{{profil.prenom}}</p>
-                <h3>Pseudo :</h3><p>{{profil.pseudo}}</p>
+                <h3 class="soustitreprofil">Email :</h3><p>{{profil.username}}</p>
+                <h3 class="soustitreprofil">Nom :</h3><p>{{profil.nom}}</p>
+                <h3 class="soustitreprofil">Prénom :</h3><p>{{profil.prenom}}</p>
+                <h3 class="soustitreprofil">Pseudo :</h3><p>{{profil.pseudo}}</p>
 
 
 
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div>
-        <a class="col-xs-12 modifprofil" href="{{path("modifprofil")}}">Modifier mon profil</a>
+        <a class="col-xs-3 col-xs-offset-6 col-sm-3 col-sm-offset-6  col-md-2 col-md-offset-5 modifprofil" href="{{path("modifprofil")}}">Modifier mon profil</a>
     </div>
 </div>
 
